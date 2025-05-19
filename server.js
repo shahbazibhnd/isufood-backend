@@ -1,47 +1,26 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+const app = express();
 const cors = require('cors');
-const mongoose = require('mongoose');
-const app = express();
+require('dotenv').config();
 
+const PORT = process.env.PORT || 3000;
+
+// استفاده از میانی‌ها
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
-// اتصال به دیتابیس لوکال (بعداً اصلاح می‌کنیم به MongoDB Atlas)
-mongoose.connect('mongodb://localhost/isufood', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-// مدل سفارش
-const Order = mongoose.model('Order', {
-  name: String,
-  address: String,
-  createdAt: { type: Date, default: Date.now },
-});
-
-// دریافت سفارش از سمت کاربر
-app.post('/api/orders', async (req, res) => {
-  const order = new Order(req.body);
-  await order.save();
-  res.status(200).json({ message: 'سفارش ذخیره شد' });
-});
-
-// شروع سرور
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-
-
-
-const express = require('express');
-const app = express();
-
+// مسیر تست برای '/'
 app.get('/', (req, res) => {
-  res.send('Server is running!');
+  res.send('سرور ایزو فود با موفقیت اجرا شده ✅');
 });
 
-const PORT = process.env.PORT || 3000;
+// مثال مسیر API
+app.post('/order', (req, res) => {
+  const data = req.body;
+  console.log('سفارش جدید:', data);
+  res.status(201).json({ message: 'سفارش با موفقیت دریافت شد' });
+});
+
 app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
