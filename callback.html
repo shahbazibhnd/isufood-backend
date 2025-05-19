@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>نتیجه پرداخت</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 40px; direction: rtl; background: #f0f9ff; }
+    .message { font-size: 20px; margin-top: 30px; color: #2c3e50; }
+    .success { color: #27ae60; }
+    .fail { color: #e74c3c; }
+  </style>
+</head>
+<body>
+
+<h2>نتیجه پرداخت</h2>
+<div id="result" class="message">در حال بررسی...</div>
+
+<script>
+function getQueryParam(name) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(name);
+}
+
+const authority = getQueryParam("Authority");
+const status = getQueryParam("Status");
+
+if (status === "OK" && authority) {
+  fetch("https://sandbox.zarinpal.com/pg/rest/WebGate/PaymentVerification.json", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      MerchantID: "2a3cbc7c-d0e6-4af7-a0cf-d43828f85459",
+      Amount: 10000,
+      Authority: authority
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.Status === 100) {
+      // ذخیره درخواست به صورت نمونه در localStorage
+      const requests = JSON.parse(localStorage.getItem("fd_requests") || "[]");
+      const newId = "r_" + Math.random().toString(36).substr(2, 9);
+      const auth = JSON.parse(localStorage.getItem("fd_auth"));
+      requests.push({
+        id: newId,
+        foodDesc: "درخواست از طریق زرین‌پال",
+        deliveryAddress: "ثبت‌شده از callback",
+        status: "paid",
+        amount: 10000,
+        requester: auth ? auth.username : "ناشناس",
+        courier: null,
+        createdAt: Date.now()
+      });
+      localStorage.setItem("fd_requests", JSON.stringify(requests));
+      document.getElementById("result").innerHTML = "✅ پرداخت موفق بود. درخواست ثبت شد.";
+      document.getElementById("result").classList.add("success");
+    } else {
+      document.getElementById("result").innerHTML = "❌ پرداخت ناموفق بود. لطفا دوباره تلاش کنید.";
+      document.getElementById("result").classList.add("fail");
+    }
+  })
+  .catch(err => {
+    document.getElementById("result").innerHTML = "⚠️ خطا در بررسی پرداخت: " + err.message;
+    document.getElementById("result").classList.add("fail");
+  });
+} else {
+  document.getElementById("result").innerHTML = "پرداخت لغو یا با خطا مواجه شد.";
+  document.getElementById("result").classList.add("fail");
+}
+</script>
+
+</body>
+</html>
