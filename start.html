@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>پرداخت با زرین پال</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; direction: rtl; background: #f7f7f7; }
+    button { padding: 10px 20px; font-size: 16px; background: #27ae60; color: white; border: none; border-radius: 8px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<h2>پرداخت هزینه غذا (آزمایشی)</h2>
+<p>مبلغ: <strong>10000</strong> تومان</p>
+
+<button onclick="startPayment()">پرداخت</button>
+
+<script>
+function startPayment() {
+  fetch("https://sandbox.zarinpal.com/pg/rest/WebGate/PaymentRequest.json", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      MerchantID: "2a3cbc7c-d0e6-4af7-a0cf-d43828f85459",
+      Amount: 10000,
+      CallbackURL: "http://localhost/callback.html",
+      Description: "پرداخت آزمایشی برای غذای ایزو"
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.Status === 100) {
+      window.location.href = "https://sandbox.zarinpal.com/pg/StartPay/" + data.Authority;
+    } else {
+      alert("خطا در ایجاد پرداخت: " + data.Status);
+    }
+  })
+  .catch(err => {
+    alert("خطای ارتباط با درگاه: " + err.message);
+  });
+}
+</script>
+
+</body>
+</html>
