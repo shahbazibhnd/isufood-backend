@@ -864,7 +864,27 @@
 </table>
 </div>
 </div>
-<button id="export-data-btn">دانلود پشتیبان اطلاعات</button></section>
+<button id="export-data-btn">دانلود پشتیبان اطلاعات</button>
+<section id="manual-order-section" style="margin-top:40px; background:#fff; border:1px solid #ccc; border-radius:12px; padding:20px;">
+  <h2>ثبت دستی سفارش غذا</h2>
+  <form id="orderForm">
+    <label for="user_id">شناسه کاربر (user_id):</label>
+    <input type="number" id="user_id" required>
+
+    <label for="items">اقلام سفارش:</label>
+    <textarea id="items" required placeholder="مثلاً: پیتزا، نوشابه"></textarea>
+
+    <label for="total">مبلغ کل (تومان):</label>
+    <input type="number" id="total" required>
+
+    <button type="submit">ثبت سفارش</button>
+  </form>
+
+  <div id="result"></div>
+  <div id="error"></div>
+</section>
+
+</section>
 </div>
 <script>
 
@@ -2127,30 +2147,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  document.getElementById('orderForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
 
-      const user_id = parseInt(document.getElementById('user_id').value);
-      const items = document.getElementById('items').value;
-      const total = parseInt(document.getElementById('total').value);
-
-      const res = await fetch('/order', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ user_id, items, total })
-      });
-
-      const data = await res.json();
-
-      document.getElementById('result').textContent = '';
-      document.getElementById('error').textContent = '';
-
-      if (res.ok) {
-        document.getElementById('result').textContent = '✅ سفارش ثبت شد!';
-      } else {
-        document.getElementById('error').textContent = '❌ خطا: ' + (data.error || 'خطای نامشخص');
-      }
-    });
 
 
 
@@ -2162,5 +2159,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 </script>
+
+<script>
+document.getElementById('orderForm')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const user_id = parseInt(document.getElementById('user_id').value);
+  const items = document.getElementById('items').value;
+  const total = parseInt(document.getElementById('total').value);
+
+  const res = await fetch('/order', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ user_id, items, total })
+  });
+
+  const data = await res.json();
+
+  document.getElementById('result').textContent = '';
+  document.getElementById('error').textContent = '';
+
+  if (res.ok) {
+    document.getElementById('result').textContent = '✅ سفارش ثبت شد!';
+  } else {
+    document.getElementById('error').textContent = '❌ خطا: ' + (data.error || 'خطای نامشخص');
+  }
+});
+</script>
+
 </body>
 </html>
