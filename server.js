@@ -42,3 +42,9 @@ app.get('*', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
+app.post('/test-supabase', async (req, res) => {
+  const { data, error } = await supabase.from('orders').insert([{ user_id: 1, items: 'تست', total: 1000 }]);
+  if (error) return res.status(500).json({ error: error.message });
+  res.json({ message: 'OK', data });
+});
