@@ -738,9 +738,9 @@
 <div aria-label="فرم ورود" id="login-form">
 <h2>ورود به سامانه</h2>
 <label for="login-username">نام کاربری <span aria-hidden="true" class="material-icons">person</span></label>
-<input aria-required="true" autocomplete="username" id="user_id" placeholder="نام کاربری خود را وارد کنید" type="text"/>
+<input aria-required="true" autocomplete="username" id="login-username" placeholder="نام کاربری خود را وارد کنید" type="text"/>
 <label for="login-password">رمز عبور <span aria-hidden="true" class="material-icons">lock</span></label>
-<input aria-required="true" autocomplete="current-password" id="total" placeholder="رمز عبور خود را وارد کنید" type="password"/>
+<input aria-required="true" autocomplete="current-password" id="login-password" placeholder="رمز عبور خود را وارد کنید" type="password"/>
 <label for="login-role">نقش <span aria-hidden="true" class="material-icons">badge</span></label>
 <select aria-required="true" id="login-role">
 <option value="requester">درخواست کننده</option>
@@ -754,9 +754,9 @@
 <div aria-label="فرم ثبت نام" class="hidden" id="signup-form">
 <h2>ثبت نام</h2>
 <label for="signup-username">نام کاربری <span aria-hidden="true" class="material-icons">person_add</span></label>
-<input aria-required="true" autocomplete="username" id="user_id" placeholder="نام کاربری دلخواه" type="text"/>
+<input aria-required="true" autocomplete="username" id="signup-username" placeholder="نام کاربری دلخواه" type="text"/>
 <label for="signup-password">رمز عبور <span aria-hidden="true" class="material-icons">lock</span></label>
-<input aria-required="true" autocomplete="new-password" id="total" placeholder="رمز عبور دلخواه" type="password"/>
+<input aria-required="true" autocomplete="new-password" id="signup-password" placeholder="رمز عبور دلخواه" type="password"/>
 <label for="signup-role">نقش <span aria-hidden="true" class="material-icons">assignment_ind</span></label>
 <select aria-required="true" id="signup-role">
 <option value="requester">درخواست کننده</option>
@@ -922,9 +922,9 @@
 
  
 
-    const loginUsername = $('#user_id');
+    const loginUsername = $('#login-username');
 
-    const loginPassword = $('#total');
+    const loginPassword = $('#login-password');
 
     const loginRole = $('#login-role');
 
