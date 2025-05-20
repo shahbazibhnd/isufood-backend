@@ -8,45 +8,37 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// مقادیر از .env
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_KEY;
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
-// ایجاد کلاینت Supabase
-const supabase = createClient(supabaseUrl, supabaseKey);
-
-// نمایش فایل‌های استاتیک از پوشه public
 app.use(express.static('public'));
 
-const PORT = process.env.PORT || 3000;
-
-// تست ساده
+// تست اتصال
 app.get('/', (req, res) => {
-  res.send('سرور ایزو فود با Supabase اجرا شد ✅');
+  res.send('سرور ISUFood با Supabase اجرا شد ✅');
 });
 
-// ثبت سفارش جدید
+// ثبت سفارش غذا
 app.post('/order', async (req, res) => {
   const { user_id, items, total } = req.body;
-
-  const { data, error } = await supabase
-    .from('orders')
-    .insert([{ user_id, items, total }]);
-
-  if (error) {
-    console.error('❌ خطا در ذخیره سفارش:', error);
-    return res.status(500).json({ error: 'خطا در ثبت سفارش' });
+  if (!user_id || !items || !total) {
+    return res.status(400).json({ error: 'اطلاعات ناقص است' });
   }
-
-  res.status(201).json({ message: 'سفارش با موفقیت ثبت شد', data });
+  const { data, error } = await supabase.from('orders').insert([{ user_id, items, total }]);
+  if (error) return res.status(500).json({ error: 'خطا در ثبت سفارش' });
+  res.status(201).json({ message: 'سفارش ثبت شد ✅', data });
 });
 
-// همه مسیرهای دیگر به index.html ختم شوند (برای SPAها مفید است)
+// گرفتن لیست سفارشات
+app.get('/orders', async (req, res) => {
+  const { data, error } = await supabase.from('orders').select('*');
+  if (error) return res.status(500).json({ error: 'خطا در دریافت سفارش‌ها' });
+  res.json(data);
+});
+
+// مسیر SPA
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// اجرای سرور
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
