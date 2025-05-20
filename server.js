@@ -81,3 +81,8 @@ app.get('*', (req, res) => {
 // شروع سرور
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
+if (error) {
+  console.error('❌ Supabase insert error:', error);
+  return res.status(500).json({ error: error.message, details: error.details });
+}

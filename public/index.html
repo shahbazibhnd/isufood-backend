@@ -2117,6 +2117,50 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
+
+
+
+
+
+
+
+
+
+  document.getElementById('orderForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const user_id = parseInt(document.getElementById('user_id').value);
+      const items = document.getElementById('items').value;
+      const total = parseInt(document.getElementById('total').value);
+
+      const res = await fetch('/order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user_id, items, total })
+      });
+
+      const data = await res.json();
+
+      document.getElementById('result').textContent = '';
+      document.getElementById('error').textContent = '';
+
+      if (res.ok) {
+        document.getElementById('result').textContent = '✅ سفارش ثبت شد!';
+      } else {
+        document.getElementById('error').textContent = '❌ خطا: ' + (data.error || 'خطای نامشخص');
+      }
+    });
+
+
+
+
+
+
+
+
+
+
 </script>
 </body>
 </html>
