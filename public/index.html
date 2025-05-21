@@ -735,7 +735,7 @@
 <button aria-label="خروج" id="logout-btn" title="خروج از حساب کاربری">خروج</button>
 </header>
 <section id="auth-section" role="main">
- <form action="/login" method="POST" id="login-form" aria-label="فرم ورود">
+ <form action="/api/login" method="POST" id="login-form" aria-label="فرم ورود">
 <h2>ورود به سامانه</h2>
 <label for="login-username">نام کاربری <span aria-hidden="true" class="material-icons">person</span></label>
 <input aria-required="true" id="login-username" name="username"  placeholder="نام کاربری خود را وارد کنید" type="text"/>
@@ -751,7 +751,7 @@
 <button type="button"  aria-label="رفتن به ثبت نام" class="link-button" id="show-signup-btn">ثبت نام جدید</button>
 <div class="error" id="login-error" role="alert" style="display:none;"></div>
 </form>
-<form action="/login" method="POST" id="login-form" aria-label="فرم ورود">
+<form action="/api/login" method="POST" id="login-form" aria-label="فرم ورود">
 <h2>ثبت نام</h2>
 <label for="signup-username">نام کاربری <span aria-hidden="true" class="material-icons">person_add</span></label>
 <input aria-required="true" autocomplete="username" name="username" id="signup-username" placeholder="نام کاربری دلخواه" type="text"/>
