@@ -747,24 +747,24 @@
 <option value="courier">پیک</option>
 <option value="admin">ادمین</option>
 </select>
-<button aria-label="ورود" id="login-btn">ورود</button>
-<button aria-label="رفتن به ثبت نام" class="link-button" id="show-signup-btn">ثبت نام جدید</button>
+<button type="submit" aria-label="ورود" id="login-btn">ورود</button>
+<button type="button"  aria-label="رفتن به ثبت نام" class="link-button" id="show-signup-btn">ثبت نام جدید</button>
 <div class="error" id="login-error" role="alert" style="display:none;"></div>
 </div>
 <div aria-label="فرم ثبت نام" class="hidden" id="signup-form">
 <h2>ثبت نام</h2>
 <label for="signup-username">نام کاربری <span aria-hidden="true" class="material-icons">person_add</span></label>
-<input aria-required="true" autocomplete="username" id="signup-username" placeholder="نام کاربری دلخواه" type="text"/>
+<input aria-required="true" autocomplete="username" name="username" id="signup-username" placeholder="نام کاربری دلخواه" type="text"/>
 <label for="signup-password">رمز عبور <span aria-hidden="true" class="material-icons">lock</span></label>
-<input aria-required="true" autocomplete="new-password" id="signup-password" placeholder="رمز عبور دلخواه" type="password"/>
+<input aria-required="true" autocomplete="new-password" id="signup-password" name="password"  placeholder="رمز عبور دلخواه" type="password"/>
 <label for="signup-role">نقش <span aria-hidden="true" class="material-icons">assignment_ind</span></label>
-<select aria-required="true" id="signup-role">
+<select aria-required="true" id="signup-role" name="role">
 <option value="requester">درخواست کننده</option>
 <option value="courier">پیک</option>
 <option value="admin">ادمین</option>
 </select>
 <button aria-label="ثبت نام" id="signup-btn">ثبت نام</button>
-<button aria-label="برگشت به ورود" class="link-button" id="show-login-btn">بازگشت به ورود</button>
+<button  aria-label="برگشت به ورود" class="link-button" id="show-login-btn">بازگشت به ورود</button>
 <div class="error" id="signup-error" role="alert" style="display:none;"></div>
 <div class="success" id="signup-success" role="status" style="display:none;"></div>
 </div>
@@ -772,9 +772,9 @@
 <section aria-label="داشبورد درخواست کننده" class="hidden" id="requester-dashboard">
 <h2>درخواست تحویل غذای جدید</h2>
 <label for="food-desc">توضیحات غذا</label>
-<textarea aria-required="true" id="food-desc" placeholder="مثلا: وعده ناهار یا شام" rows="3"></textarea>
+<textarea aria-required="true" id="food-desc" name="foodDesc" placeholder="مثلا: وعده ناهار یا شام" rows="3"></textarea>
 <label for="delivery-address">آدرس تحویل</label>
-<textarea aria-required="true" id="delivery-address" placeholder="مثلا: شماره اتاق را وارد کنید" rows="2"></textarea>
+<textarea aria-required="true" id="delivery-address" name="address" placeholder="مثلا: شماره اتاق را وارد کنید" rows="2"></textarea>
 <!-- Added payment link text below upload -->
 <div aria-label="لینک پرداخت" class="payment-link-container">
 <a href="https://zarinp.al/712694" rel="noopener noreferrer" target="_blank">پرداخت سریع: https://zarinp.al/712694</a>
