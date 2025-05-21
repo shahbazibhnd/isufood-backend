@@ -738,11 +738,11 @@
 <div aria-label="فرم ورود" id="login-form">
 <h2>ورود به سامانه</h2>
 <label for="login-username">نام کاربری <span aria-hidden="true" class="material-icons">person</span></label>
-<input aria-required="true" autocomplete="username" id="login-username" placeholder="نام کاربری خود را وارد کنید" type="text"/>
+<input aria-required="true" autocomplete="username" id="username" placeholder="نام کاربری خود را وارد کنید" type="text"/>
 <label for="login-password">رمز عبور <span aria-hidden="true" class="material-icons">lock</span></label>
-<input aria-required="true" autocomplete="current-password" id="login-password" placeholder="رمز عبور خود را وارد کنید" type="password"/>
+<input aria-required="true" autocomplete="current-password" id="password" placeholder="رمز عبور خود را وارد کنید" type="password"/>
 <label for="login-role">نقش <span aria-hidden="true" class="material-icons">badge</span></label>
-<select aria-required="true" id="login-role">
+<select aria-required="true" id="role">
 <option value="requester">درخواست کننده</option>
 <option value="courier">پیک</option>
 <option value="admin">ادمین</option>
@@ -902,11 +902,11 @@
 
  
 
-    const loginUsername = $('#login-username');
+    const loginUsername = $('#username');
 
-    const loginPassword = $('#login-password');
+    const loginPassword = $('#password');
 
-    const loginRole = $('#login-role');
+    const loginRole = $('#role');
 
     const loginBtn = $('#login-btn');
 
@@ -1586,11 +1586,11 @@
 
       loginError.style.display = 'none';
 
-      let username = loginUsername.value.trim();
+      let username = Username.value.trim();
 
-      let password = loginPassword.value;
+      let password = Password.value;
 
-      let role = loginRole.value;
+      let role = Role.value;
 
  
 
@@ -1930,9 +1930,9 @@
 
  
 
-      loginUsername.value = '';
+      Username.value = '';
 
-      loginPassword.value = '';
+      Password.value = '';
 
     }
 
@@ -1960,11 +1960,11 @@
 
  
 
-      loginUsername.value = '';
+      Username.value = '';
 
-      loginPassword.value = '';
+      Password.value = '';
 
-      loginRole.value = 'requester';
+      Role.value = 'requester';
 
  
 
