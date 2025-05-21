@@ -751,7 +751,7 @@
 <button type="button"  aria-label="رفتن به ثبت نام" class="link-button" id="show-signup-btn">ثبت نام جدید</button>
 <div class="error" id="login-error" role="alert" style="display:none;"></div>
 </form>
-<form action="/api/login" method="POST" id="login-form" aria-label="فرم ورود">
+<form action="/api/register" method="POST" id="signup-form" aria-label="فرم ورود">
 <h2>ثبت نام</h2>
 <label for="signup-username">نام کاربری <span aria-hidden="true" class="material-icons">person_add</span></label>
 <input aria-required="true" autocomplete="username" name="username" id="signup-username" placeholder="نام کاربری دلخواه" type="text"/>
@@ -786,11 +786,14 @@
 <br/>
         به نام علی شهبازی
       </div>
+      <form id="receipt-form" enctype="multipart/form-data"></form>
 <label for="receipt-upload">آپلود تصویر رسید واریزی</label>
-<input accept="image/*" aria-label="آپلود تصویر رسید واریزی" id="receipt-upload" type="file"/>
+<input accept="image/*" aria-label="آپلود تصویر رسید واریزی" id="receipt-upload" name="receipt" type="file" required />
 <img alt="پیش نمایش تصویر رسید واریزی" class="receipt-preview" id="receipt-preview"/>
 <br/>
 <button aria-label="ثبت درخواست و پرداخت" id="place-request-btn">ثبت درخواست و پرداخت</button>
+</form>
+
 <h2 style="margin-top: 30px;">پیگیری درخواست‌ها</h2>
 <div aria-live="polite" aria-relevant="additions" id="requester-requests-list"></div>
 </section>

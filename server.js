@@ -13,6 +13,8 @@ const { v4: uuidv4 } = require('uuid');
 const { createClient } = require('@supabase/supabase-js');
 require('dotenv').config();
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 const app = express();
 const upload = multer({ storage: multer.memoryStorage() });
 
@@ -98,3 +100,35 @@ app.patch('/api/order/:id/accept', async (req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
 
+app.post('/api/login', async (req, res) => {
+  const { username, password, role } = req.body;
+  const { data, error } = await supabase.from('users')
+    .select('*').eq('username', username).eq('password', password).eq('role', role);
+
+  if (error) return res.status(500).json({ error: error.message });
+  if (data.length === 0) return res.status(400).json({ error: 'نام کاربری یا رمز اشتباه است' });
+
+  // ثبت لاگ ورود
+  await supabase.from('login_logs').insert([{
+    username,
+    role,
+    action: 'login',
+    time: new Date()
+  }]);
+
+  res.json({ user: data[0] });
+});
+
+app.get('/api/export', async (req, res) => {
+  const [users, orders, logs] = await Promise.all([
+    supabase.from('users').select('*'),
+    supabase.from('orders').select('*'),
+    supabase.from('login_logs').select('*')
+  ]);
+
+  res.json({
+    users: users.data,
+    orders: orders.data,
+    login_logs: logs.data
+  });
+});
