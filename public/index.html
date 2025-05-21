@@ -771,26 +771,37 @@
 </section>
 <section aria-label="داشبورد درخواست کننده" class="hidden" id="requester-dashboard">
 <h2>درخواست تحویل غذای جدید</h2>
+
+ <form id="receipt-form" enctype="multipart/form-data">
+    <!-- فیلد مخفی برای ارسال شناسه کاربر -->
+    <input type="hidden" name="user" id="hidden-user" value="USERNAME_PLACEHOLDER" />
+
 <label for="food-desc">توضیحات غذا</label>
 <textarea aria-required="true" id="food-desc" name="foodDesc" placeholder="مثلا: وعده ناهار یا شام" rows="3"></textarea>
+
 <label for="delivery-address">آدرس تحویل</label>
 <textarea aria-required="true" id="delivery-address" name="address" placeholder="مثلا: شماره اتاق را وارد کنید" rows="2"></textarea>
+
 <!-- Added payment link text below upload -->
 <div aria-label="لینک پرداخت" class="payment-link-container">
 <a href="https://zarinp.al/712694" rel="noopener noreferrer" target="_blank">پرداخت سریع: https://zarinp.al/712694</a>
 </div>
+
 <br/>
+
 <div style="margin-bottom: 16px; padding: 12px; background: #f0f4ff; border: 1.5px solid #3469e7; border-radius: 10px; color: #3469e7; font-weight: 700; font-size: 15px; text-align: center;">
 
         شماره کارت پرداخت: <span style="letter-spacing: normal;">6063731175793711</span>
 <br/>
         به نام علی شهبازی
       </div>
-      <form id="receipt-form" enctype="multipart/form-data"></form>
+
+
 <label for="receipt-upload">آپلود تصویر رسید واریزی</label>
 <input accept="image/*" aria-label="آپلود تصویر رسید واریزی" id="receipt-upload" name="receipt" type="file" required />
 <img alt="پیش نمایش تصویر رسید واریزی" class="receipt-preview" id="receipt-preview"/>
 <br/>
+
 <button aria-label="ثبت درخواست و پرداخت" id="place-request-btn">ثبت درخواست و پرداخت</button>
 </form>
 
@@ -798,9 +809,11 @@
 <div aria-live="polite" aria-relevant="additions" id="requester-requests-list"></div>
 </section>
 <section aria-label="داشبورد پیک" class="hidden" id="courier-dashboard">
-<h2>درخواست‌های تحویل غذا</h2>
+
+  <h2>درخواست‌های تحویل غذا</h2>
 <div aria-live="polite" aria-relevant="additions" id="courier-requests-list"></div>
 </section>
+
 <section aria-label="داشبورد ادمین" class="hidden" id="admin-dashboard">
 <h2>گزارش‌گیری و مدیریت</h2>
 <div id="admin-reports">
