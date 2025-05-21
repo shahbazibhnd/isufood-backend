@@ -1,27 +1,23 @@
 {
-  "name": "isufood-backend",
+  "name": "isufood-server",
   "version": "1.0.0",
+  "description": "Backend server for ISUFood app using Express and Supabase",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.49.6",
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "express": "^4.21.2",
-    "multer": "^2.0.0"
-  }
-}
-
-
-{
-  "dependencies": {
-    "express": "^4.18.2",
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "multer": "^1.4.5-lts.1",
     "@supabase/supabase-js": "^2.39.5",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
     "uuid": "^9.0.1"
-  }
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "keywords": [],
+  "author": "ISUFood Dev",
+  "license": "MIT"
 }
