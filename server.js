@@ -13,10 +13,12 @@ const { v4: uuidv4 } = require('uuid');
 const { createClient } = require('@supabase/supabase-js');
 require('dotenv').config();
 
-app.use(express.static(path.join(__dirname, 'public')));
+
 
 const app = express();
 const upload = multer({ storage: multer.memoryStorage() });
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors());
 app.use(express.json());
