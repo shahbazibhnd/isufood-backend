@@ -9,723 +9,723 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 <style>
 
-  body {
+    body {
 
-    font-family: 'Vazirmatn', sans-serif;
+      font-family: 'Vazirmatn', sans-serif;
 
-    background: linear-gradient(135deg, #f0f4ff, #d9e4ff);
+      background: linear-gradient(135deg, #f0f4ff, #d9e4ff);
 
-    margin: 0;
+      margin: 0;
 
-    padding: 0;
+      padding: 0;
 
-    color: #2c3e50;
+      color: #2c3e50;
 
-    min-height: 100vh;
+      min-height: 100vh;
 
-    display: flex;
+      display: flex;
 
-    justify-content: center;
+      justify-content: center;
 
-    align-items: flex-start;
+      align-items: flex-start;
 
-    padding-top: 40px;
+      padding-top: 40px;
 
-    user-select: none;
+      user-select: none;
 
-  }
-
- 
-
-  #app {
-
-    background: #ffffff;
-
-    border-radius: 16px;
-
-    box-shadow: 0 14px 32px rgba(0, 49, 135, 0.2);
-
-    width: 420px;
-
-    max-width: 95vw;
-
-    padding: 30px 40px 40px 40px;
-
-    box-sizing: border-box;
-
-    transition: box-shadow 0.3s ease;
-
-  }
-
-  #app:hover {
-
-    box-shadow: 0 18px 44px rgba(0, 49, 135, 0.3);
-
-  }
+    }
 
  
 
-  header#app-header {
+    #app {
 
-    display: flex;
+      background: #ffffff;
 
-    flex-direction: column;
+      border-radius: 16px;
 
-    align-items: center;
+      box-shadow: 0 14px 32px rgba(0, 49, 135, 0.2);
 
-    margin-bottom: 30px;
+      width: 420px;
 
-    border-bottom: 1.5px solid #dde6f7;
+      max-width: 95vw;
 
-    padding-bottom: 10px;
+      padding: 30px 40px 40px 40px;
 
-  }
+      box-sizing: border-box;
 
-  header#app-header h1.brand-name {
+      transition: box-shadow 0.3s ease;
 
-    font-size: 2.4rem;
+    }
 
-    font-weight: 900;
+    #app:hover {
 
-    color: #e63946;
+      box-shadow: 0 18px 44px rgba(0, 49, 135, 0.3);
 
-    margin: 0 0 6px 0;
-
-    letter-spacing: 2px;
-
-    font-family: 'Vazirmatn', sans-serif;
-
-  }
-
-  header#app-header h2.app-title {
-
-    font-size: 1.5rem;
-
-    color: #1f3c88;
-
-    margin: 0;
-
-    letter-spacing: 1.2px;
-
-  }
-
-  #logout-btn {
-
-    background-color: #e74c3c;
-
-    border: none;
-
-    padding: 8px 20px;
-
-    border-radius: 50px;
-
-    color: white;
-
-    font-weight: 700;
-
-    font-size: 14px;
-
-    cursor: pointer;
-
-    box-shadow: 0 7px 12px rgba(231, 76, 60, 0.4);
-
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-
-    display: none;
-
-    margin-top: 10px;
-
-  }
-
-  #logout-btn:hover {
-
-    background-color: #c0392b;
-
-    box-shadow: 0 10px 18px rgba(192, 57, 43, 0.6);
-
-  }
+    }
 
  
 
-  h2 {
+    header#app-header {
 
-    text-align: center;
+      display: flex;
 
-    margin-bottom: 24px;
+      flex-direction: column;
 
-    color: #34495e;
+      align-items: center;
 
-    font-weight: 700;
+      margin-bottom: 30px;
 
-    font-size: 1.9rem;
+      border-bottom: 1.5px solid #dde6f7;
 
-    letter-spacing: 0.3px;
+      padding-bottom: 10px;
 
-  }
+    }
 
- 
+    header#app-header h1.brand-name {
 
-  label {
+      font-size: 2.4rem;
 
-    display: block;
+      font-weight: 900;
 
-    margin-bottom: 10px;
+      color: #e63946;
 
-    font-weight: 600;
+      margin: 0 0 6px 0;
 
-    color: #5a6a8d;
+      letter-spacing: 2px;
 
-    font-size: 15px;
+      font-family: 'Vazirmatn', sans-serif;
 
-  }
+    }
 
-  input, select, textarea {
+    header#app-header h2.app-title {
 
-    width: 100%;
+      font-size: 1.5rem;
 
-    padding: 11px 14px;
+      color: #1f3c88;
 
-    margin-bottom: 20px;
+      margin: 0;
 
-    border: 2px solid #cbd4f5;
+      letter-spacing: 1.2px;
 
-    border-radius: 12px;
+    }
 
-    font-size: 15px;
+    #logout-btn {
 
-    color: #1c2a48;
+      background-color: #e74c3c;
 
-    box-shadow: inset 1px 1px 5px #e3e9ff;
+      border: none;
 
-    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+      padding: 8px 20px;
 
-    resize: vertical;
+      border-radius: 50px;
 
-    font-family: 'Vazirmatn', sans-serif;
+      color: white;
 
-  }
+      font-weight: 700;
 
-  input::placeholder, textarea::placeholder {
+      font-size: 14px;
 
-    color: #8a9edc;
+      cursor: pointer;
 
-    font-weight: 500;
+      box-shadow: 0 7px 12px rgba(231, 76, 60, 0.4);
 
-  }
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
 
-  input:focus, select:focus, textarea:focus {
+      display: none;
 
-    border-color: #3469e7;
+      margin-top: 10px;
 
-    box-shadow: 0 0 8px #4c7dfd80;
+    }
 
-    outline: none;
+    #logout-btn:hover {
 
-  }
+      background-color: #c0392b;
 
-  input[type="file"] {
+      box-shadow: 0 10px 18px rgba(192, 57, 43, 0.6);
 
-    padding: 4px 8px;
-
-    border: 2px solid #cbd4f5;
-
-    border-radius: 12px;
-
-    cursor: pointer;
-
-  }
+    }
 
  
 
-  .receipt-preview {
+    h2 {
 
-    margin-top: 10px;
+      text-align: center;
 
-    max-width: 100%;
+      margin-bottom: 24px;
 
-    max-height: 150px;
+      color: #34495e;
 
-    border: 1px solid #cbd4f5;
+      font-weight: 700;
 
-    border-radius: 8px;
+      font-size: 1.9rem;
 
-    object-fit: contain;
+      letter-spacing: 0.3px;
 
-    display: none;
-
-  }
+    }
 
  
 
-  .payment-link-container {
+    label {
 
-    margin-top: 8px;
+      display: block;
 
-    font-weight: 700;
+      margin-bottom: 10px;
 
-    color: #3469e7;
+      font-weight: 600;
 
-    text-align: center;
+      color: #5a6a8d;
 
-    border: 1.5px solid #3469e7;
+      font-size: 15px;
 
-    border-radius: 8px;
+    }
 
-    padding: 8px;
+    input, select, textarea {
 
-    user-select: text;
+      width: 100%;
 
-    cursor: pointer;
+      padding: 11px 14px;
 
-  }
+      margin-bottom: 20px;
 
-  .payment-link-container a {
+      border: 2px solid #cbd4f5;
 
-    color: #3469e7;
+      border-radius: 12px;
 
-    text-decoration: none;
+      font-size: 15px;
 
-    font-weight: 700;
+      color: #1c2a48;
 
-  }
+      box-shadow: inset 1px 1px 5px #e3e9ff;
 
-  .payment-link-container a:hover {
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
 
-    text-decoration: underline;
+      resize: vertical;
 
-  }
+      font-family: 'Vazirmatn', sans-serif;
 
- 
+    }
 
-  button, .link-button {
+    input::placeholder, textarea::placeholder {
 
-    font-family: 'Vazirmatn', sans-serif;
+      color: #8a9edc;
 
-    font-weight: 700;
+      font-weight: 500;
 
-    cursor: pointer;
+    }
 
-    border-radius: 30px;
+    input:focus, select:focus, textarea:focus {
 
-    transition: background-color 0.3s ease, color 0.3s ease;
+      border-color: #3469e7;
 
-    text-align: center;
+      box-shadow: 0 0 8px #4c7dfd80;
 
-  }
+      outline: none;
 
-  button {
+    }
 
-    background-color: #3469e7;
+    input[type="file"] {
 
-    border: none;
+      padding: 4px 8px;
 
-    color: white;
+      border: 2px solid #cbd4f5;
 
-    padding: 13px 18px;
+      border-radius: 12px;
 
-    font-size: 16px;
+      cursor: pointer;
 
-    box-shadow: 0 8px 20px rgba(52, 105, 231, 0.3);
-
-    width: 100%;
-
-  }
-
-  button:hover {
-
-    background-color: #1f54c7;
-
-    box-shadow: 0 12px 32px rgba(31, 84, 199, 0.5);
-
-  }
-
-  .link-button {
-
-    background: none;
-
-    border: none;
-
-    color: #3469e7;
-
-    padding: 0;
-
-    font-size: 15px;
-
-    margin-top: 12px;
-
-    width: 100%;
-
-    text-decoration: underline;
-
-  }
-
-  .link-button:hover {
-
-    color: #234a9f;
-
-  }
+    }
 
  
 
-  .error {
+    .receipt-preview {
 
-    color: #e74c3c;
+      margin-top: 10px;
 
-    font-size: 14px;
+      max-width: 100%;
 
-    margin-bottom: 12px;
+      max-height: 150px;
 
-    text-align: center;
+      border: 1px solid #cbd4f5;
 
-    font-weight: 600;
+      border-radius: 8px;
 
-    letter-spacing: 0.3px;
+      object-fit: contain;
 
-    opacity: 0.95;
+      display: none;
 
-  }
-
-  .success {
-
-    color: #27ae60;
-
-    font-size: 14px;
-
-    margin-bottom: 12px;
-
-    text-align: center;
-
-    font-weight: 600;
-
-    letter-spacing: 0.3px;
-
-    opacity: 0.95;
-
-  }
+    }
 
  
 
-  /* Cards for request list and reports */
+    .payment-link-container {
 
-  .card {
+      margin-top: 8px;
 
-    border: 1.8px solid #cbd4f5;
+      font-weight: 700;
 
-    background-color: #f5f7ff;
+      color: #3469e7;
 
-    box-shadow: 5px 6px 16px -10px rgba(52, 105, 231, 0.4);
+      text-align: center;
 
-    padding: 18px 20px;
+      border: 1.5px solid #3469e7;
 
-    border-radius: 16px;
+      border-radius: 8px;
 
-    margin-bottom: 16px;
+      padding: 8px;
 
-    font-size: 15px;
+      user-select: text;
 
-    color: #243b6b;
+      cursor: pointer;
 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-    user-select: text;
+    .payment-link-container a {
 
-    position: relative;
+      color: #3469e7;
 
-  }
+      text-decoration: none;
 
-  .card:hover {
+      font-weight: 700;
 
-    transform: translateY(-4px);
+    }
 
-    box-shadow: 8px 10px 26px -8px rgba(52, 105, 231, 0.6);
+    .payment-link-container a:hover {
 
-  }
+      text-decoration: underline;
 
-  .card.highlight {
-
-    border-color: #3469e7;
-
-    background-color: #e4ebff;
-
-  }
+    }
 
  
 
-  .request-info {
+    button, .link-button {
 
-    margin-bottom: 8px;
+      font-family: 'Vazirmatn', sans-serif;
 
-    line-height: 1.4;
+      font-weight: 700;
 
-    user-select: text;
+      cursor: pointer;
 
-  }
+      border-radius: 30px;
 
-  .request-info > span {
+      transition: background-color 0.3s ease, color 0.3s ease;
 
-    font-weight: 600;
+      text-align: center;
 
-  }
+    }
 
- 
+    button {
 
-  /* Status badges */
+      background-color: #3469e7;
 
-  .request-status {
+      border: none;
 
-    font-weight: 700;
+      color: white;
 
-    padding: 4px 14px;
+      padding: 13px 18px;
 
-    border-radius: 100px;
+      font-size: 16px;
 
-    font-size: 14px;
+      box-shadow: 0 8px 20px rgba(52, 105, 231, 0.3);
 
-    color: #fff;
+      width: 100%;
 
-    display: inline-block;
+    }
 
-    user-select: none;
+    button:hover {
 
-    box-shadow: 0 2px 10px #00000025;
+      background-color: #1f54c7;
 
-    letter-spacing: 0.3px;
+      box-shadow: 0 12px 32px rgba(31, 84, 199, 0.5);
 
-  }
+    }
 
-  .status-pending {
+    .link-button {
 
-    background-color: #3498db;
+      background: none;
 
-  }
+      border: none;
 
-  .status-accepted {
+      color: #3469e7;
 
-    background-color: #27ae60;
+      padding: 0;
 
-  }
+      font-size: 15px;
 
-  .status-delivered {
+      margin-top: 12px;
 
-    background-color: #718096;
+      width: 100%;
 
-  }
+      text-decoration: underline;
 
- 
+    }
 
-  .btn-accept {
+    .link-button:hover {
 
-    background-color: #27ae60;
+      color: #234a9f;
 
-    color: white;
-
-    border: none;
-
-    border-radius: 12px;
-
-    padding: 8px 18px;
-
-    cursor: pointer;
-
-    font-weight: 700;
-
-    font-size: 15px;
-
-    margin-top: 10px;
-
-    box-shadow: 0 8px 20px rgba(39, 174, 96, 0.4);
-
-    width: 100%;
-
-    transition: background-color 0.3s ease;
-
-    user-select: none;
-
-  }
-
-  .btn-accept:hover {
-
-    background-color: #1e8449;
-
-    box-shadow: 0 12px 28px rgba(30, 132, 73, 0.6);
-
-  }
+    }
 
  
 
-  .btn-paid {
+    .error {
 
-    background-color: #2980b9;
+      color: #e74c3c;
 
-    border: none;
+      font-size: 14px;
 
-    border-radius: 12px;
+      margin-bottom: 12px;
 
-    color: white;
+      text-align: center;
 
-    padding: 6px 14px;
+      font-weight: 600;
 
-    font-weight: 700;
+      letter-spacing: 0.3px;
 
-    font-size: 14px;
+      opacity: 0.95;
 
-    cursor: pointer;
+    }
 
-    margin-top: 10px;
+    .success {
 
-    box-shadow: 0 5px 15px rgba(41, 128, 185, 0.4);
+      color: #27ae60;
 
-    user-select: none;
+      font-size: 14px;
 
-    transition: background-color 0.3s ease;
+      margin-bottom: 12px;
 
-  }
+      text-align: center;
 
-  .btn-paid:hover {
+      font-weight: 600;
 
-    background-color: #1c5980;
+      letter-spacing: 0.3px;
 
-  }
+      opacity: 0.95;
 
- 
-
-  /* Dashboard containers */
-
-  #requester-dashboard, #courier-dashboard, #admin-dashboard {
-
-    margin-top: 10px;
-
-  }
+    }
 
  
 
-  /* Admin report cards container */
+    /* Cards for request list and reports */
 
-  #admin-reports {
+    .card {
 
-    display: flex;
+      border: 1.8px solid #cbd4f5;
 
-    flex-direction: column;
+      background-color: #f5f7ff;
 
-    gap: 14px;
+      box-shadow: 5px 6px 16px -10px rgba(52, 105, 231, 0.4);
 
-    margin-top: 20px;
+      padding: 18px 20px;
 
-  }
+      border-radius: 16px;
 
- 
+      margin-bottom: 16px;
 
-  /* Scroll container for courier requests */
+      font-size: 15px;
 
-  #courier-requests-list {
+      color: #243b6b;
 
-    max-height: 420px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-    overflow-y: auto;
+      user-select: text;
 
-    padding-right: 6px;
+      position: relative;
 
-  }
+    }
 
- 
+    .card:hover {
 
-  /* Scrollbar styling */
+      transform: translateY(-4px);
 
-  #courier-requests-list::-webkit-scrollbar {
+      box-shadow: 8px 10px 26px -8px rgba(52, 105, 231, 0.6);
 
-    width: 6px;
+    }
 
-  }
+    .card.highlight {
 
-  #courier-requests-list::-webkit-scrollbar-track {
+      border-color: #3469e7;
 
-    background: transparent;
+      background-color: #e4ebff;
 
-  }
-
-  #courier-requests-list::-webkit-scrollbar-thumb {
-
-    background-color: #3469e7;
-
-    border-radius: 10px;
-
-    opacity: 0.7;
-
-    transition: opacity 0.3s ease;
-
-  }
-
-  #courier-requests-list::-webkit-scrollbar-thumb:hover {
-
-    opacity: 1;
-
-  }
-
-  /* Transitions for showing / hiding */
-
-  .hidden {
-
-    display: none !important;
-
-  }
+    }
 
  
 
-  /* Icons styling */
+    .request-info {
 
-  .material-icons {
+      margin-bottom: 8px;
 
-    vertical-align: middle;
+      line-height: 1.4;
 
-    margin-left: 6px;
+      user-select: text;
 
-    font-size: 18px;
+    }
 
-    color: #3469e7;
+    .request-info > span {
 
-  }
+      font-weight: 600;
+
+    }
 
  
 
-  /* Report list table */
+    /* Status badges */
 
-  table.report-table {
+    .request-status {
 
-    width: 100%;
+      font-weight: 700;
 
-    border-collapse: collapse;
+      padding: 4px 14px;
 
-  }
+      border-radius: 100px;
 
-  table.report-table th, table.report-table td {
+      font-size: 14px;
 
-    text-align: center;
+      color: #fff;
 
-    padding: 6px 12px;
+      display: inline-block;
 
-    border-bottom: 1.5px solid #cbd4f5;
+      user-select: none;
 
-    font-size: 14px;
+      box-shadow: 0 2px 10px #00000025;
 
-    color: #2c3e50;
+      letter-spacing: 0.3px;
 
-  }
+    }
 
-  table.report-table th {
+    .status-pending {
 
-    background-color: #e3e9ff;
+      background-color: #3498db;
 
-    font-weight: 700;
+    }
 
-  }
+    .status-accepted {
 
-  table.report-table tr:hover {
+      background-color: #27ae60;
 
-    background-color: #d0d9ff;
+    }
 
-  }
+    .status-delivered {
 
-</style>
+      background-color: #718096;
+
+    }
+
+ 
+
+    .btn-accept {
+
+      background-color: #27ae60;
+
+      color: white;
+
+      border: none;
+
+      border-radius: 12px;
+
+      padding: 8px 18px;
+
+      cursor: pointer;
+
+      font-weight: 700;
+
+      font-size: 15px;
+
+      margin-top: 10px;
+
+      box-shadow: 0 8px 20px rgba(39, 174, 96, 0.4);
+
+      width: 100%;
+
+      transition: background-color 0.3s ease;
+
+      user-select: none;
+
+    }
+
+    .btn-accept:hover {
+
+      background-color: #1e8449;
+
+      box-shadow: 0 12px 28px rgba(30, 132, 73, 0.6);
+
+    }
+
+ 
+
+    .btn-paid {
+
+      background-color: #2980b9;
+
+      border: none;
+
+      border-radius: 12px;
+
+      color: white;
+
+      padding: 6px 14px;
+
+      font-weight: 700;
+
+      font-size: 14px;
+
+      cursor: pointer;
+
+      margin-top: 10px;
+
+      box-shadow: 0 5px 15px rgba(41, 128, 185, 0.4);
+
+      user-select: none;
+
+      transition: background-color 0.3s ease;
+
+    }
+
+    .btn-paid:hover {
+
+      background-color: #1c5980;
+
+    }
+
+ 
+
+    /* Dashboard containers */
+
+    #requester-dashboard, #courier-dashboard, #admin-dashboard {
+
+      margin-top: 10px;
+
+    }
+
+ 
+
+    /* Admin report cards container */
+
+    #admin-reports {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 14px;
+
+      margin-top: 20px;
+
+    }
+
+ 
+
+    /* Scroll container for courier requests */
+
+    #courier-requests-list {
+
+      max-height: 420px;
+
+      overflow-y: auto;
+
+      padding-right: 6px;
+
+    }
+
+ 
+
+    /* Scrollbar styling */
+
+    #courier-requests-list::-webkit-scrollbar {
+
+      width: 6px;
+
+    }
+
+    #courier-requests-list::-webkit-scrollbar-track {
+
+      background: transparent;
+
+    }
+
+    #courier-requests-list::-webkit-scrollbar-thumb {
+
+      background-color: #3469e7;
+
+      border-radius: 10px;
+
+      opacity: 0.7;
+
+      transition: opacity 0.3s ease;
+
+    }
+
+    #courier-requests-list::-webkit-scrollbar-thumb:hover {
+
+      opacity: 1;
+
+    }
+
+    /* Transitions for showing / hiding */
+
+    .hidden {
+
+      display: none !important;
+
+    }
+
+ 
+
+    /* Icons styling */
+
+    .material-icons {
+
+      vertical-align: middle;
+
+      margin-left: 6px;
+
+      font-size: 18px;
+
+      color: #3469e7;
+
+    }
+
+ 
+
+    /* Report list table */
+
+    table.report-table {
+
+      width: 100%;
+
+      border-collapse: collapse;
+
+    }
+
+    table.report-table th, table.report-table td {
+
+      text-align: center;
+
+      padding: 6px 12px;
+
+      border-bottom: 1.5px solid #cbd4f5;
+
+      font-size: 14px;
+
+      color: #2c3e50;
+
+    }
+
+    table.report-table th {
+
+      background-color: #e3e9ff;
+
+      font-weight: 700;
+
+    }
+
+    table.report-table tr:hover {
+
+      background-color: #d0d9ff;
+
+    }
+
+  </style>
 </head>
 <body>
 <div id="app">
@@ -781,12 +781,1411 @@
 </div>
 <br/>
 <div style="margin-bottom: 16px; padding: 12px; background: #f0f4ff; border: 1.5px solid #3469e7; border-radius: 10px; color: #3469e7; font-weight: 700; font-size: 15px; text-align: center;">
-      شماره کارت پرداخت: <span style="letter-spacing: normal;">6063731175793711</span>
+
+        شماره کارت پرداخت: <span style="letter-spacing: normal;">6063731175793711</span>
 <br/>
-      به نام علی شهبازی
-    </div>
+        به نام علی شهبازی
+      </div>
 <label for="receipt-upload">آپلود تصویر رسید واریزی</label>
 <input accept="image/*" aria-label="آپلود تصویر رسید واریزی" id="receipt-upload" type="file"/>
 <img alt="پیش نمایش تصویر رسید واریزی" class="receipt-preview" id="receipt-preview"/>
 <br/>
-<button aria-label="
+<button aria-label="ثبت درخواست و پرداخت" id="place-request-btn">ثبت درخواست و پرداخت</button>
+<h2 style="margin-top: 30px;">پیگیری درخواست‌ها</h2>
+<div aria-live="polite" aria-relevant="additions" id="requester-requests-list"></div>
+</section>
+<section aria-label="داشبورد پیک" class="hidden" id="courier-dashboard">
+<h2>درخواست‌های تحویل غذا</h2>
+<div aria-live="polite" aria-relevant="additions" id="courier-requests-list"></div>
+</section>
+<section aria-label="داشبورد ادمین" class="hidden" id="admin-dashboard">
+<h2>گزارش‌گیری و مدیریت</h2>
+<div id="admin-reports">
+<div class="card">
+<h3>تعداد کل درخواست‌ها: <span id="total-requests">0</span></h3>
+</div>
+<div class="card">
+<h3>وضعیت درخواست‌ها</h3>
+<table aria-label="گزارش وضعیت درخواست‌ها" class="report-table">
+<thead>
+<tr><th>وضعیت</th><th>تعداد</th></tr>
+</thead>
+<tbody>
+<tr><td>در انتظار پرداخت</td><td id="count-pending">0</td></tr>
+<tr><td>پرداخت شده</td><td id="count-paid">0</td></tr>
+<tr><td>قبول شده</td><td id="count-accepted">0</td></tr>
+<tr><td>تحویل شده</td><td id="count-delivered">0</td></tr>
+</tbody>
+</table>
+</div>
+<div class="card">
+<h3>تعداد کاربران</h3>
+<table aria-label="گزارش تعداد کاربران" class="report-table">
+<thead>
+<tr><th>نقش</th><th>تعداد</th></tr>
+</thead>
+<tbody>
+<tr><td>درخواست کننده</td><td id="count-requester-users">0</td></tr>
+<tr><td>پیک</td><td id="count-courier-users">0</td></tr>
+<tr><td>ادمین</td><td id="count-admin-users">0</td></tr>
+</tbody>
+</table>
+</div>
+<div class="card">
+<h3>درآمد کل (تومان)</h3>
+<p id="total-revenue" style="font-size:1.5rem; font-weight:700; color:#3469e7;">0</p>
+</div>
+<div class="card">
+<h3>ورود و خروج کاربران</h3>
+<table class="report-table" id="login-log-table">
+<thead>
+<tr><th>کاربر</th><th>نقش</th><th>نوع</th><th>زمان</th></tr>
+</thead>
+<tbody></tbody>
+</table>
+</div><div class="card">
+<h3>لیست کامل درخواست‌ها</h3>
+<table class="report-table" id="all-requests-table">
+<thead>
+<tr>
+<th>کاربر</th><th>توضیحات غذا</th><th>آدرس</th><th>وضعیت</th><th>پیک</th><th>زمان</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+<div class="card">
+<h3>رمز عبور کاربران</h3>
+<table class="report-table" id="user-passwords-table">
+<thead>
+<tr><th>نام کاربری</th><th>نقش</th><th>رمز عبور</th></tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+</div>
+<button id="export-data-btn">دانلود پشتیبان اطلاعات</button>
+<section id="manual-order-section" style="margin-top:40px; background:#fff; border:1px solid #ccc; border-radius:12px; padding:20px;">
+  <h2>ثبت دستی سفارش غذا</h2>
+  <form id="orderForm">
+    <label for="user_id">شناسه کاربر (user_id):</label>
+    <input type="number" id="user_id" required>
+
+    <label for="items">اقلام سفارش:</label>
+    <textarea id="items" required placeholder="مثلاً: پیتزا، نوشابه"></textarea>
+
+    <label for="total">مبلغ کل (تومان):</label>
+    <input type="number" id="total" required>
+
+    <button type="submit">ثبت سفارش</button>
+  </form>
+
+  <div id="result"></div>
+  <div id="error"></div>
+</section>
+
+</section>
+</div>
+<script>
+
+  (() => {
+
+    const $ = (selector) => document.querySelector(selector);
+
+ 
+
+    // Local storage keys
+
+    const USERS_KEY = 'fd_users';
+
+    const REQUESTS_KEY = 'fd_requests';
+
+    const AUTH_KEY = 'fd_auth';
+
+ 
+
+    // Elements
+
+    const loginForm = $('#login-form');
+
+    const signupForm = $('#signup-form');
+
+    const authSection = $('#auth-section');
+
+    const requesterDashboard = $('#requester-dashboard');
+
+    const courierDashboard = $('#courier-dashboard');
+
+    const adminDashboard = $('#admin-dashboard');
+
+    const logoutBtn = $('#logout-btn');
+
+ 
+
+    const loginUsername = $('#login-username');
+
+    const loginPassword = $('#login-password');
+
+    const loginRole = $('#login-role');
+
+    const loginBtn = $('#login-btn');
+
+    const loginError = $('#login-error');
+
+    const showSignupBtn = $('#show-signup-btn');
+
+ 
+
+    const signupUsername = $('#signup-username');
+
+    const signupPassword = $('#signup-password');
+
+    const signupRole = $('#signup-role');
+
+    const signupBtn = $('#signup-btn');
+
+    const signupError = $('#signup-error');
+
+    const signupSuccess = $('#signup-success');
+
+    const showLoginBtn = $('#show-login-btn');
+
+ 
+
+    const foodDesc = $('#food-desc');
+
+    const deliveryAddress = $('#delivery-address');
+
+    const placeRequestBtn = $('#place-request-btn');
+
+    const requesterRequestsList = $('#requester-requests-list');
+
+    const courierRequestsList = $('#courier-requests-list');
+
+ 
+
+    const receiptUpload = $('#receipt-upload');
+
+    const receiptPreview = $('#receipt-preview');
+
+
+    // Admin report elements
+
+    const totalRequestsElem = $('#total-requests');
+
+    const countPendingElem = $('#count-pending');
+
+    const countPaidElem = $('#count-paid');
+
+    const countAcceptedElem = $('#count-accepted');
+
+    const countDeliveredElem = $('#count-delivered');
+
+    const countRequesterUsersElem = $('#count-requester-users');
+
+    const countCourierUsersElem = $('#count-courier-users');
+
+    const countAdminUsersElem = $('#count-admin-users');
+
+    const totalRevenueElem = $('#total-revenue');
+
+ 
+
+    // Fixed payment amount and payment URL
+
+    const PAYMENT_AMOUNT = 10000; // تومان
+
+    const PAYMENT_LINK = "https://zarinp.al/712694";
+
+ 
+
+    // Store receipt images mapped to request IDs in localStorage key
+
+    const RECEIPT_IMAGES_KEY = 'fd_receipt_images';
+
+ 
+
+    // Data helpers
+
+    function loadUsers() {
+
+      try {
+
+        return JSON.parse(localStorage.getItem(USERS_KEY)) || [];
+
+      } catch {
+
+        return [];
+
+      }
+
+    }
+
+    function saveUsers(users) {
+
+      localStorage.setItem(USERS_KEY, JSON.stringify(users));
+
+    }
+
+    function loadRequests() {
+
+      try {
+
+        return JSON.parse(localStorage.getItem(REQUESTS_KEY)) || [];
+
+      } catch {
+
+        return [];
+
+      }
+
+    }
+
+    function saveRequests(requests) {
+
+      localStorage.setItem(REQUESTS_KEY, JSON.stringify(requests));
+
+    }
+
+    function saveAuth(user) {
+
+      localStorage.setItem(AUTH_KEY, JSON.stringify(user));
+
+    }
+
+    function loadAuth() {
+
+      try {
+
+        return JSON.parse(localStorage.getItem(AUTH_KEY));
+
+      } catch {
+
+        return null;
+
+      }
+
+    }
+
+    function loadReceiptImages() {
+
+      try {
+
+        return JSON.parse(localStorage.getItem(RECEIPT_IMAGES_KEY)) || {};
+
+      } catch {
+
+        return {};
+
+      }
+
+    }
+
+    function saveReceiptImages(images) {
+
+      localStorage.setItem(RECEIPT_IMAGES_KEY, JSON.stringify(images));
+
+    }
+
+    function logoutUser() {
+
+      localStorage.removeItem(AUTH_KEY);
+
+      currentAuth = null;
+
+      showAuthForms();
+
+    }
+
+    function showAuthForms(){
+
+    $('#auth-section').classList.remove('hidden');
+
+    $('#login-form').classList.remove('hidden');
+
+    $('#signup-form').classList.add('hidden');
+
+    $('#logout-btn').style.display = 'none';
+
+    $('#requester-dashboard').classList.add('hidden');
+
+    $('#courier-dashboard').classList.add('hidden');
+
+    $('#admin-dashboard').classList.add('hidden');
+
+    }
+
+
+
+
+    function enterApp(){
+
+      $('#auth-section').classList.add('hidden');
+
+      $('#logout-btn').style.display = 'inline-block';
+
+
+      if(!currentAuth) return showAuthForms();
+
+      $('#requester-dashboard').classList.add('hidden');
+
+      $('#courier-dashboard').classList.add('hidden');
+
+      $('#admin-dashboard').classList.add('hidden');
+
+      
+    }
+ 
+
+    // Validation helpers
+
+    function isValidUsername(name) {
+
+      return typeof name === 'string' && name.trim().length >= 3;
+
+    }
+
+    function isValidPassword(pw) {
+
+      return typeof pw === 'string' && pw.length >= 4;
+
+    }
+
+ 
+
+    // Current user logged in
+
+    let currentAuth = null;
+
+ 
+
+    // Current uploaded receipt data (base64)
+
+    let currentReceiptData = null;
+
+ 
+
+    // Generate unique ID for requests
+
+    function generateId() {
+
+      return 'r_' + Math.random().toString(36).substr(2, 9);
+
+    }
+
+ 
+
+    // Map status code to Persian string
+
+    function translateStatus(status) {
+
+      if (status === 'pending') return 'در انتظار پرداخت';
+
+      if (status === 'paid') return 'پرداخت شده';
+
+      if (status === 'accepted') return 'قبول شده و در حال تحویل';
+
+      if (status === 'delivered') return 'تحویل شده';
+
+      return 'نامشخص';
+
+    }
+
+ 
+
+    // Escape HTML to prevent XSS
+
+    function escapeHtml(text) {
+
+      const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+
+      return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+
+    }
+
+ 
+
+    // Helper: Show image preview from file input
+
+    receiptUpload.onchange = (e) => {
+
+      const file = e.target.files[0];
+
+      if (!file) {
+
+        receiptPreview.style.display = 'none';
+
+        currentReceiptData = null;
+
+        return;
+
+      }
+
+      const reader = new FileReader();
+
+      reader.onload = function(ev) {
+
+        currentReceiptData = ev.target.result;
+
+        receiptPreview.src = currentReceiptData;
+
+        receiptPreview.style.display = 'block';
+
+      }
+
+      reader.readAsDataURL(file);
+
+    };
+
+ 
+
+    // Render requests for requester, show receipt image if uploaded
+
+    function renderRequesterRequests() {
+
+      if (!currentAuth) return;
+
+      const requests = loadRequests().filter(r => r.requester === currentAuth.username);
+
+      const receipts = loadReceiptImages();
+
+ 
+
+      if (requests.length === 0) {
+
+        requesterRequestsList.innerHTML = `<p style="text-align:center; color:#718096;">هیچ درخواستی ثبت نشده است.</p>`;
+
+        return;
+
+      }
+
+      requesterRequestsList.innerHTML = '';
+
+      requests.forEach(req => {
+
+        const div = document.createElement('div');
+
+        div.className = 'card';
+
+        let statusClass = '';
+
+        if (req.status === 'pending') statusClass = 'status-pending';
+
+        else if (req.status === 'paid') statusClass = 'status-pending';
+
+        else if (req.status === 'accepted') statusClass = 'status-accepted';
+
+        else if (req.status === 'delivered') statusClass = 'status-delivered';
+
+ 
+
+        // Check if receipt uploaded for this request
+
+        let receiptHtml = '';
+
+        if (receipts[req.id]) {
+
+          receiptHtml = `<div style="margin-top:8px;"><img src="${receipts[req.id]}" alt="تصویر رسید پرداخت" style="max-width:100%; max-height:150px; border-radius:8px; border:1.5px solid #cbd4f5;"></div>`;
+
+        }
+
+ 
+
+        div.innerHTML = `
+
+          <div class="request-info"><span>توضیحات غذا:</span> ${escapeHtml(req.foodDesc)}</div>
+
+          <div class="request-info"><span>آدرس تحویل:</span> ${escapeHtml(req.deliveryAddress)}</div>
+
+          <div class="request-info"><span>مبلغ:</span> ${PAYMENT_AMOUNT.toLocaleString()} تومان</div>
+
+          <div class="request-info"><span>وضعیت:</span> 
+
+            <span class="request-status ${statusClass}">${translateStatus(req.status)}</span>
+
+          </div>
+
+          ${receiptHtml}
+
+          ${req.status === 'pending' ? `<button class="btn-paid" data-id="${req.id}" aria-label="تایید پرداخت سفارش">تایید پرداخت</button>` : ''}
+
+          ${req.status === 'accepted' ? `<div class="request-info"><span>پیک مسئول:</span> ${escapeHtml(req.courier)}</div>` : ''}
+
+        `;
+
+        requesterRequestsList.appendChild(div);
+
+      });
+
+ 
+
+      // Add event handlers for payment confirmation buttons
+
+      Array.from(requesterRequestsList.querySelectorAll('.btn-paid')).forEach(btn => {
+
+        btn.onclick = (e) => {
+
+          const id = e.target.getAttribute('data-id');
+
+          confirmPayment(id);
+
+        }
+
+      });
+
+    }
+
+ 
+
+    // Render requests for courier, show receipt image if uploaded
+
+    function renderCourierRequests() {
+
+      if (!currentAuth) return;
+
+      const requests = loadRequests().filter(r =>
+
+        (r.status === 'paid') || (r.status === 'accepted' && r.courier === currentAuth.username));
+
+      const receipts = loadReceiptImages();
+
+ 
+
+      if (requests.length === 0) {
+
+        courierRequestsList.innerHTML = `<p style="text-align:center; color:#718096;">درخواستی برای تحویل وجود ندارد.</p>`;
+
+        return;
+
+      }
+
+      courierRequestsList.innerHTML = '';
+
+      requests.forEach(req => {
+
+        const div = document.createElement('div');
+
+        div.className = 'card';
+
+        let actionButton = '';
+
+        if (req.status === 'paid') {
+
+          actionButton = `<button class="btn-accept" data-id="${req.id}" aria-label="قبول درخواست برای: ${escapeHtml(req.foodDesc)}">قبول درخواست</button>`;
+
+        } else if (req.status === 'accepted' && req.courier === currentAuth.username) {
+
+          actionButton = `<div class="request-status status-accepted" style="width:fit-content; margin-top:6px;">در حال تحویل</div>`;
+
+        }
+
+ 
+
+        let receiptHtml = '';
+
+        if (receipts[req.id]) {
+
+          receiptHtml = `<div style="margin-top:8px;"><img src="${receipts[req.id]}" alt="تصویر رسید پرداخت" style="max-width:100%; max-height:150px; border-radius:8px; border:1.5px solid #cbd4f5;"></div>`;
+
+        }
+
+ 
+
+        div.innerHTML = `
+
+          <div class="request-info"><span>توضیحات غذا:</span> ${escapeHtml(req.foodDesc)}</div>
+
+          <div class="request-info"><span>آدرس تحویل:</span> ${escapeHtml(req.deliveryAddress)}</div>
+
+          <div class="request-info"><span>درخواست کننده:</span> ${escapeHtml(req.requester)}</div>
+
+          <div class="request-info"><span>وضعیت:</span> 
+
+            <span class="request-status ${'status-' + req.status}">${translateStatus(req.status)}</span>
+
+          </div>
+
+          ${receiptHtml}
+
+          ${actionButton}
+
+        `;
+
+        courierRequestsList.appendChild(div);
+
+      });
+
+      // Attach event listeners for accept buttons
+
+      Array.from(courierRequestsList.querySelectorAll('.btn-accept')).forEach(btn => {
+
+        btn.onclick = (e) => {
+
+          const id = e.target.getAttribute('data-id');
+
+          handleAcceptRequest(id);
+
+        }
+
+      });
+
+    }
+
+ 
+
+    // Render admin reports
+
+    function renderAdminReports() {
+
+  const passwordsTable = document.querySelector('#user-passwords-table tbody');
+  if (passwordsTable) {
+    passwordsTable.innerHTML = '';
+    users.forEach(user => {
+      const row = document.createElement('tr');
+      row.innerHTML = `<td>${escapeHtml(user.username)}</td><td>${user.role}</td><td>${escapeHtml(user.password)}</td>`;
+      passwordsTable.appendChild(row);
+    });
+  }
+
+
+      const users = loadUsers();
+
+      const requests = loadRequests();
+
+ 
+
+      totalRequestsElem.textContent = requests.length;
+
+ 
+
+      const statusCounts = {
+
+        pending: 0,
+
+        paid: 0,
+
+        accepted: 0,
+
+        delivered: 0
+
+      };
+
+      requests.forEach(r => {
+
+        if (statusCounts[r.status] !== undefined) {
+
+          statusCounts[r.status]++;
+
+        }
+
+      });
+
+ 
+
+      countPendingElem.textContent = statusCounts.pending;
+
+      countPaidElem.textContent = statusCounts.paid;
+
+      countAcceptedElem.textContent = statusCounts.accepted;
+
+      countDeliveredElem.textContent = statusCounts.delivered;
+
+ 
+
+      const roleCounts = {
+
+        requester: 0,
+
+        courier: 0,
+
+        admin: 0
+
+      };
+
+      users.forEach(u => {
+
+        if (roleCounts[u.role] !== undefined) {
+
+          roleCounts[u.role]++;
+
+        }
+
+      });
+
+ 
+
+      countRequesterUsersElem.textContent = roleCounts.requester;
+
+      countCourierUsersElem.textContent = roleCounts.courier;
+
+      countAdminUsersElem.textContent = roleCounts.admin;
+
+ 
+
+      // Calculate total revenue: number of paid requests * PAYMENT_AMOUNT
+
+      const revenue = requests.reduce((sum, r) => {
+
+        if (['paid', 'accepted', 'delivered'].includes(r.status)) {
+
+          return sum + PAYMENT_AMOUNT;
+
+        }
+
+        return sum;
+
+      }, 0);
+
+      totalRevenueElem.textContent = revenue.toLocaleString();
+
+    }
+
+ 
+
+    // Confirm payment of an existing request (simulate user paid externally)
+
+    function confirmPayment(requestId) {
+
+      const requests = loadRequests();
+
+      const idx = requests.findIndex(r => r.id === requestId);
+
+      if (idx < 0) return;
+
+ 
+
+      if (!currentReceiptData) {
+
+        alert('لطفا ابتدا تصویر رسید واریزی را آپلود کنید.');
+
+        return;
+
+      }
+
+ 
+
+      if (confirm('آیا پرداخت خود را انجام داده‌اید؟ پس از تایید، وضعیت درخواست به "پرداخت شده" تغییر می‌کند.')) {
+
+        requests[idx].status = 'paid';
+
+        saveRequests(requests);
+
+ 
+
+        // Save receipt image
+
+        const receipts = loadReceiptImages();
+
+        receipts[requestId] = currentReceiptData;
+
+        saveReceiptImages(receipts);
+
+ 
+
+        currentReceiptData = null;
+
+        receiptUpload.value = '';
+
+        receiptPreview.style.display = 'none';
+
+ 
+
+        if (currentAuth && currentAuth.role === 'requester') renderRequesterRequests();
+
+        alert('وضعیت درخواست به "پرداخت شده" تغییر یافت. ممنون از پرداخت شما.');
+
+      }
+
+    }
+
+ 
+
+    // Handle login
+
+    loginBtn.onclick = () => {
+
+      loginError.style.display = 'none';
+
+      let username = loginUsername.value.trim();
+
+      let password = loginPassword.value;
+
+      let role = loginRole.value;
+
+ 
+
+      // Admin fixed credentials
+
+      if(role === 'admin'){
+
+        if(username === 'shahbazi' && password === 'bhnd3533'){
+
+          currentAuth = {username, role};
+
+          saveAuth(currentAuth);
+
+          enterApp();
+
+          return;
+
+        } else {
+
+          displayError(loginError, 'نام کاربری یا رمز عبور ادمین اشتباه است.');
+
+          return;
+
+        }
+
+      }
+
+ 
+
+      if (!isValidUsername(username)) {
+
+        displayError(loginError, 'نام کاربری باید حداقل ۳ حرف باشد.');
+
+        return;
+
+      }
+
+      if (!isValidPassword(password)) {
+
+        displayError(loginError, 'رمز عبور باید حداقل ۴ حرف باشد.');
+
+        return;
+
+      }
+
+ 
+
+      const users = loadUsers();
+
+      const user = users.find(u => u.username === username && u.role === role);
+
+ 
+
+      if (!user || user.password !== password) {
+
+        displayError(loginError, 'نام کاربری یا رمز عبور اشتباه است.');
+
+        return;
+
+      }
+
+ 
+
+      currentAuth = { username, role };
+
+      saveAuth(currentAuth);
+
+      enterApp();
+
+    };
+
+ 
+
+    // Handle signup
+
+    signupBtn.onclick = () => {
+
+      signupError.style.display = 'none';
+
+      signupSuccess.style.display = 'none';
+
+ 
+
+      let username = signupUsername.value.trim();
+
+      let password = signupPassword.value;
+
+      let role = signupRole.value;
+
+ 
+
+      if(role === 'admin'){
+
+        displayError(signupError, 'ثبت نام ادمین امکان‌پذیر نیست.');
+
+        return;
+
+      }
+
+ 
+
+      if (!isValidUsername(username)) {
+
+        displayError(signupError, 'نام کاربری باید حداقل ۳ حرف باشد.');
+
+        return;
+
+      }
+
+      if (!isValidPassword(password)) {
+
+        displayError(signupError, 'رمز عبور باید حداقل ۴ حرف باشد.');
+
+        return;
+
+      }
+
+ 
+
+      
+      let users = loadUsers();
+
+      // اجازه بدهد یک نام کاربری با نقش متفاوت ثبت شود
+      if(users.find(u => u.username === username && u.role === role)) {
+        displayError(signupError, 'این نام کاربری با این نقش قبلاً ثبت شده است.');
+        return;
+      }
+
+      users.push({ username, password, role });
+      saveUsers(users);
+
+
+ 
+
+      users.push({ username, password, role });
+
+      saveUsers(users);
+
+ 
+
+      signupSuccess.textContent = 'ثبت نام با موفقیت انجام شد. اکنون وارد شوید.';
+
+      signupSuccess.style.display = 'block';
+
+ 
+
+      signupUsername.value = '';
+
+      signupPassword.value = '';
+
+      signupRole.value = 'requester';
+
+    };
+
+ 
+
+    // Show signup form
+
+    showSignupBtn.onclick = () => {
+
+      loginError.style.display = 'none';
+
+      loginForm.classList.add('hidden');
+
+      signupForm.classList.remove('hidden');
+
+    };
+
+ 
+
+    // Show login form
+
+    showLoginBtn.onclick = () => {
+
+      signupError.style.display = 'none';
+
+      signupSuccess.style.display = 'none';
+
+      signupForm.classList.add('hidden');
+
+      loginForm.classList.remove('hidden');
+
+    };
+
+ 
+
+    // Display error message helper
+
+    function displayError(elem, msg) {
+
+      elem.textContent = msg;
+
+      elem.style.display = 'block';
+
+    }
+
+ 
+
+    // Place new food delivery request - redirect to payment link immediately
+
+    
+    
+    placeRequestBtn.onclick = () => {
+      const food = foodDesc.value.trim();
+      const address = deliveryAddress.value.trim();
+
+      if (food.length === 0) {
+        alert('لطفا توضیحات غذا را وارد کنید.');
+        return;
+      }
+      if (address.length === 0) {
+        alert('لطفا آدرس تحویل را وارد کنید.');
+        return;
+      }
+      if (!currentReceiptData) {
+        alert('آپلود رسید پرداخت الزامی است.');
+        return;
+      }
+
+      const requests = loadRequests();
+      const newRequestId = generateId();
+
+      requests.push({
+        id: newRequestId,
+        foodDesc: food,
+        deliveryAddress: address,
+        status: 'paid',
+        amount: PAYMENT_AMOUNT,
+        requester: currentAuth.username,
+        courier: null,
+        createdAt: Date.now()
+      });
+
+      saveRequests(requests);
+
+      // Save receipt image to localStorage
+      const receipts = loadReceiptImages();
+      receipts[newRequestId] = currentReceiptData;
+      saveReceiptImages(receipts);
+
+      foodDesc.value = '';
+      deliveryAddress.value = '';
+      currentReceiptData = null;
+      receiptUpload.value = '';
+      receiptPreview.style.display = 'none';
+
+      renderRequesterRequests();
+
+      alert('درخواست با موفقیت ثبت شد و رسید ذخیره گردید.');
+    };
+    
+    
+
+ 
+
+    // Accept request (courier)
+
+    function handleAcceptRequest(id) {
+
+      const requests = loadRequests();
+
+      const reqIdx = requests.findIndex(r => r.id === id);
+
+      if (reqIdx < 0) return;
+
+ 
+
+      if (requests[reqIdx].status !== 'paid') {
+
+        alert('این درخواست قابل قبول نیست، زیرا پرداخت نشده است.');
+
+        renderCourierRequests();
+
+        return;
+
+      }
+
+      requests[reqIdx].status = 'accepted';
+
+      requests[reqIdx].courier = currentAuth.username;
+
+      saveRequests(requests);
+
+      renderCourierRequests();
+
+    }
+
+ 
+
+    // Show app main or auth forms based on login state
+
+    function enterApp() {
+
+      authSection.classList.add('hidden');
+
+      logoutBtn.style.display = 'inline-block';
+
+ 
+
+      if (!currentAuth) {
+
+        showAuthForms();
+
+        return;
+
+      }
+
+ 
+
+      requesterDashboard.classList.add('hidden');
+
+      courierDashboard.classList.add('hidden');
+
+      adminDashboard.classList.add('hidden');
+
+ 
+
+      if (currentAuth.role === 'requester') {
+
+        requesterDashboard.classList.remove('hidden');
+
+        renderRequesterRequests();
+
+      } else if (currentAuth.role === 'courier') {
+
+        courierDashboard.classList.remove('hidden');
+
+        renderCourierRequests();
+
+      } else if (currentAuth.role === 'admin') {
+
+        adminDashboard.classList.remove('hidden');
+
+        renderAdminReports();
+
+      }
+
+ 
+
+      loginUsername.value = '';
+
+      loginPassword.value = '';
+
+    }
+
+ 
+
+    // Show login/signup forms for non-auth users
+
+    function showAuthForms() {
+
+      authSection.classList.remove('hidden');
+
+      loginForm.classList.remove('hidden');
+
+      signupForm.classList.add('hidden');
+
+      logoutBtn.style.display = 'none';
+
+ 
+
+      requesterDashboard.classList.add('hidden');
+
+      courierDashboard.classList.add('hidden');
+
+      adminDashboard.classList.add('hidden');
+
+ 
+
+      loginUsername.value = '';
+
+      loginPassword.value = '';
+
+      loginRole.value = 'requester';
+
+ 
+
+      signupUsername.value = '';
+
+      signupPassword.value = '';
+
+      signupRole.value = 'requester';
+
+ 
+
+      loginError.style.display = 'none';
+
+      signupError.style.display = 'none';
+
+      signupSuccess.style.display = 'none';
+
+    }
+
+ 
+
+  })();
+
+
+
+
+
+const PAYMENT_AMOUNT = 10000;
+const AUTH_KEY = 'fd_auth';
+
+function escapeHtml(text) {
+  const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+  return text.replace(/[&<>"']/g, m => map[m]);
+}
+function translateStatus(status) {
+  return {
+    pending: 'در انتظار پرداخت',
+    paid: 'پرداخت شده',
+    accepted: 'در حال تحویل',
+    delivered: 'تحویل شده'
+  }[status] || 'نامشخص';
+}
+function loadUsers() {
+  return JSON.parse(localStorage.getItem('fd_users') || '[]');
+}
+function loadRequests() {
+  return JSON.parse(localStorage.getItem('fd_requests') || '[]');
+}
+function loadReceiptImages() {
+  return JSON.parse(localStorage.getItem('fd_receipt_images') || '{}');
+}
+function renderAdminReports() {
+
+  const passwordsTable = document.querySelector('#user-passwords-table tbody');
+  if (passwordsTable) {
+    passwordsTable.innerHTML = '';
+    users.forEach(user => {
+      const row = document.createElement('tr');
+      row.innerHTML = `<td>${escapeHtml(user.username)}</td><td>${user.role}</td><td>${escapeHtml(user.password)}</td>`;
+      passwordsTable.appendChild(row);
+    });
+  }
+
+  const users = loadUsers();
+  const requests = loadRequests();
+  const receipts = loadReceiptImages();
+  const logs = JSON.parse(localStorage.getItem('fd_login_logs') || '[]');
+
+  const loginLogTable = document.querySelector('#login-log-table tbody');
+  loginLogTable.innerHTML = '';
+  logs.slice().reverse().forEach(log => {
+    const dateStr = new Date(log.time).toLocaleString('fa-IR');
+    const row = document.createElement('tr');
+    row.innerHTML = `<td>${escapeHtml(log.username)}</td><td>${log.role}</td><td>${log.type}</td><td>${dateStr}</td>`;
+    loginLogTable.appendChild(row);
+  });
+
+  const allRequestsTable = document.querySelector('#all-requests-table tbody');
+  allRequestsTable.innerHTML = '';
+  requests.slice().reverse().forEach(req => {
+    const dateStr = new Date(req.createdAt).toLocaleString('fa-IR');
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${escapeHtml(req.requester)}</td>
+      <td>${escapeHtml(req.foodDesc)}</td>
+      <td>${escapeHtml(req.deliveryAddress)}</td>
+      <td>${translateStatus(req.status)}</td>
+      <td>${req.courier ? escapeHtml(req.courier) : '-'}</td>
+      <td>${dateStr}</td>
+    `;
+    allRequestsTable.appendChild(row);
+  });
+}
+
+function saveLoginLog(username, role, type = 'ورود') {
+  const logs = JSON.parse(localStorage.getItem('fd_login_logs') || '[]');
+  logs.push({ username, role, type, time: new Date().toISOString() });
+  localStorage.setItem('fd_login_logs', JSON.stringify(logs));
+}
+
+function logoutUser() {
+  const currentAuth = JSON.parse(localStorage.getItem(AUTH_KEY));
+  if (currentAuth) saveLoginLog(currentAuth.username, currentAuth.role, 'خروج');
+  localStorage.removeItem(AUTH_KEY);
+}
+
+document.getElementById('export-data-btn').onclick = () => {
+  const backup = {
+    users: loadUsers(),
+    requests: loadRequests(),
+    receipts: loadReceiptImages(),
+    loginLogs: JSON.parse(localStorage.getItem('fd_login_logs') || '[]')
+  };
+  const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'backup_isufood.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+};
+
+window.onload = renderAdminReports;
+
+
+document.getElementById('logout-btn').addEventListener('click', () => {
+  logoutUser();
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const logoutBtn = document.getElementById('logout-btn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', function () {
+      logoutUser();
+      alert('با موفقیت خارج شدید.');
+      location.reload();
+    });
+  }
+});
+
+
+// بررسی ثبت درخواست جدید از callback پس از بارگذاری
+document.addEventListener("DOMContentLoaded", () => {
+  if (currentAuth && currentAuth.role === "requester") {
+    renderRequesterRequests();
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+<script>
+document.getElementById('orderForm')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const user_id = parseInt(document.getElementById('user_id').value);
+  const items = document.getElementById('items').value;
+  const total = parseInt(document.getElementById('total').value);
+
+  const res = await fetch('/order', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ user_id, items, total })
+  });
+
+  const data = await res.json();
+
+  document.getElementById('result').textContent = '';
+  document.getElementById('error').textContent = '';
+
+  if (res.ok) {
+    document.getElementById('result').textContent = '✅ سفارش ثبت شد!';
+  } else {
+    document.getElementById('error').textContent = '❌ خطا: ' + (data.error || 'خطای نامشخص');
+  }
+});
+</script>
+
+</body>
+</html>
