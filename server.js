@@ -1,4 +1,11 @@
 // server.js
+
+process.on('uncaughtException', err => {
+  console.error('Uncaught Exception:', err.stack);
+});
+
+
+
 const express = require('express');
 const cors = require('cors');
 const multer = require('multer');
