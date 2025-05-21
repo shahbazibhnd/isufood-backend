@@ -1159,7 +1159,19 @@
 
     let currentReceiptData = null;
 
- 
+ // وقتی فایل رسید آپلود می‌شود
+receiptUpload.addEventListener('change', () => {
+  const file = receiptUpload.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      currentReceiptData = e.target.result;  // Base64
+      receiptPreview.src = currentReceiptData;
+      receiptPreview.style.display = 'block';
+    }
+    reader.readAsDataURL(file);
+  }
+});
 
     // Generate unique ID for requests
 
@@ -1739,13 +1751,6 @@
       saveUsers(users);
 
 
- 
-
-      users.push({ username, password, role });
-
-      saveUsers(users);
-
- 
 
       signupSuccess.textContent = 'ثبت نام با موفقیت انجام شد. اکنون وارد شوید.';
 
@@ -2033,7 +2038,7 @@ function loadReceiptImages() {
   return JSON.parse(localStorage.getItem('fd_receipt_images') || '{}');
 }
 function renderAdminReports() {
-
+  const users = loadUsers();
   const passwordsTable = document.querySelector('#user-passwords-table tbody');
   if (passwordsTable) {
     passwordsTable.innerHTML = '';
@@ -2043,8 +2048,9 @@ function renderAdminReports() {
       passwordsTable.appendChild(row);
     });
   }
+  
+}
 
-  const users = loadUsers();
   const requests = loadRequests();
   const receipts = loadReceiptImages();
   const logs = JSON.parse(localStorage.getItem('fd_login_logs') || '[]');
@@ -2073,7 +2079,7 @@ function renderAdminReports() {
     `;
     allRequestsTable.appendChild(row);
   });
-}
+
 
 function saveLoginLog(username, role, type = 'ورود') {
   const logs = JSON.parse(localStorage.getItem('fd_login_logs') || '[]');
@@ -2172,7 +2178,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+ document.getElementById('login-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const username = document.getElementById('login-username').value.trim();
+      const password = document.getElementById('login-password').value;
+      const role = document.getElementById('login-role').value;
+      const errorBox = document.getElementById('login-error');
 
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password, role })
+      });
+
+      const result = await res.json();
+      if (res.ok) {
+        alert('ورود موفق بود.');
+        console.log(result.user);
+        // می‌توان اطلاعات کاربر را در localStorage ذخیره کرد
+      } else {
+        errorBox.textContent = result.error || 'خطا در ورود';
+        errorBox.style.display = 'block';
+      }
+    });
 
 
 

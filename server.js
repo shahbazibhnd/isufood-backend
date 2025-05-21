@@ -1,5 +1,4 @@
 // server.js
-
 process.on('uncaughtException', err => {
   console.error('Uncaught Exception:', err.stack);
 });
@@ -9,28 +8,24 @@ const cors = require('cors');
 const multer = require('multer');
 const { v4: uuidv4 } = require('uuid');
 const { createClient } = require('@supabase/supabase-js');
-const path = require('path'); // 👈 الان بالا آورده شده
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
 const upload = multer({ storage: multer.memoryStorage() });
 
-
-
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
-
 app.use(express.json());
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
-// صفحه‌ی اصلی
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// ثبت‌نام
 app.post('/api/register', async (req, res) => {
   const { username, password, role } = req.body;
   if (!username || !password || !role)
@@ -54,9 +49,9 @@ app.post('/api/register', async (req, res) => {
   res.json({ message: 'ثبت‌نام موفق' });
 });
 
-// ورود (با ثبت لاگ)
 app.post('/api/login', async (req, res) => {
   const { username, password, role } = req.body;
+
   const { data, error } = await supabase
     .from('users')
     .select('*')
@@ -68,7 +63,6 @@ app.post('/api/login', async (req, res) => {
   if (data.length === 0)
     return res.status(400).json({ error: 'نام کاربری یا رمز اشتباه است' });
 
-  // ثبت لاگ ورود
   await supabase.from('login_logs').insert([{
     username,
     role,
@@ -79,7 +73,6 @@ app.post('/api/login', async (req, res) => {
   res.json({ user: data[0] });
 });
 
-// ثبت سفارش
 app.post('/api/order', upload.single('receipt'), async (req, res) => {
   const { user, foodDesc, address } = req.body;
   const file = req.file;
@@ -114,7 +107,6 @@ app.post('/api/order', upload.single('receipt'), async (req, res) => {
   res.json({ message: 'سفارش ثبت شد' });
 });
 
-// دریافت لیست سفارش‌ها
 app.get('/api/orders', async (req, res) => {
   const { data, error } = await supabase
     .from('orders')
@@ -126,7 +118,6 @@ app.get('/api/orders', async (req, res) => {
   res.json(data);
 });
 
-// تایید پرداخت توسط مدیر
 app.patch('/api/order/:id/confirm', async (req, res) => {
   const id = req.params.id;
 
@@ -140,7 +131,6 @@ app.patch('/api/order/:id/confirm', async (req, res) => {
   res.json({ message: 'وضعیت پرداخت تایید شد' });
 });
 
-// قبول سفارش توسط پیک
 app.patch('/api/order/:id/accept', async (req, res) => {
   const id = req.params.id;
   const { courier } = req.body;
@@ -158,7 +148,6 @@ app.patch('/api/order/:id/accept', async (req, res) => {
   res.json({ message: 'سفارش توسط پیک تایید شد' });
 });
 
-// خروجی گرفتن از دیتابیس (برای ادمین)
 app.get('/api/export', async (req, res) => {
   const [users, orders, logs] = await Promise.all([
     supabase.from('users').select('*'),
@@ -173,17 +162,7 @@ app.get('/api/export', async (req, res) => {
   });
 });
 
-// اجرای سرور
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () =>
   console.log(`🚀 Server running on port ${PORT}`)
 );
-
-
-
-
-
-
-
-
-
