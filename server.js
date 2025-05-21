@@ -15,9 +15,7 @@ require('dotenv').config();
 const app = express();
 const upload = multer({ storage: multer.memoryStorage() });
 
-const form = document.getElementById('receipt-form');
-const fileInput = document.getElementById('receipt-upload');
-const preview = document.getElementById('receipt-preview');
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
@@ -175,43 +173,6 @@ app.get('/api/export', async (req, res) => {
   });
 });
 
-
-
-// پیش‌نمایش رسید
-  fileInput.addEventListener('change', () => {
-    const file = fileInput.files[0];
-    if (file) {
-      preview.src = URL.createObjectURL(file);
-      preview.style.maxWidth = '100%';
-      preview.style.marginTop = '10px';
-    }
-  });
-
-  // ارسال فرم
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(form);
-
-    const res = await fetch('/api/order', {
-      method: 'POST',
-      body: formData,
-    });
-
-    const result = await res.json();
-
-    if (res.ok) {
-      alert('درخواست با موفقیت ثبت شد.');
-      form.reset();
-      preview.src = '';
-    } else {
-      alert(result.error || 'خطا در ثبت سفارش');
-    }
-  });
-
-
-
-  
 // اجرای سرور
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () =>
