@@ -1,88 +1,84 @@
+// server.js
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config();
-const path = require('path');
+const multer = require('multer');
+const { v4: uuidv4 } = require('uuid');
 const { createClient } = require('@supabase/supabase-js');
+require('dotenv').config();
 
 const app = express();
+const upload = multer({ storage: multer.memoryStorage() });
+
 app.use(cors());
 app.use(express.json());
 
-// اتصال به Supabase
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
-// ارائه فایل‌های استاتیک از public/
-app.use(express.static('public'));
+// ثبت‌نام
+app.post('/api/register', async (req, res) => {
+  const { username, password, role } = req.body;
+  if (!username || !password || !role) return res.status(400).json({ error: 'اطلاعات ناقص' });
 
-// روت تست سرور
-app.get('/', (req, res) => {
-  res.send('سرور ISUFood با Supabase اجرا شد ✅');
+  const { data: existing } = await supabase.from('users').select('*').eq('username', username).eq('role', role);
+  if (existing.length > 0) return res.status(400).json({ error: 'کاربر تکراری' });
+
+  const { error } = await supabase.from('users').insert([{ username, password, role }]);
+  if (error) return res.status(500).json({ error: error.message });
+  res.json({ message: 'ثبت‌نام موفق' });
 });
 
-// روت ثبت سفارش
-app.post('/order', async (req, res) => {
-  const { user_id, items, total } = req.body;
-
-  if (!user_id || !items || !total) {
-    return res.status(400).json({ error: 'اطلاعات ناقص است' });
-  }
-
-  const { data, error } = await supabase
-    .from('orders')
-    .insert([{ user_id, items, total }]);
-
-  if (error) {
-    console.error('❌ خطای Supabase هنگام ثبت سفارش:', error);
-    return res.status(500).json({
-      error: 'خطا در ثبت سفارش',
-      details: error.message,
-      hint: error.hint,
-    });
-  }
-
-  res.status(201).json({ message: 'سفارش ثبت شد ✅', data });
+// ورود
+app.post('/api/login', async (req, res) => {
+  const { username, password, role } = req.body;
+  const { data, error } = await supabase.from('users').select('*').eq('username', username).eq('password', password).eq('role', role);
+  if (error) return res.status(500).json({ error: error.message });
+  if (data.length === 0) return res.status(400).json({ error: 'نام کاربری یا رمز اشتباه است' });
+  res.json({ user: data[0] });
 });
 
-// روت دریافت همه سفارش‌ها
-app.get('/orders', async (req, res) => {
-  const { data, error } = await supabase.from('orders').select('*');
+// ثبت سفارش
+app.post('/api/order', upload.single('receipt'), async (req, res) => {
+  const { user, foodDesc, address } = req.body;
+  const file = req.file;
+  if (!user || !foodDesc || !address || !file) return res.status(400).json({ error: 'اطلاعات ناقص' });
 
-  if (error) {
-    console.error('❌ خطا در دریافت سفارش‌ها:', error);
-    return res.status(500).json({ error: 'خطا در دریافت سفارش‌ها', details: error.message });
-  }
+  const ext = file.originalname.split('.').pop();
+  const fileName = `receipt-${uuidv4()}.${ext}`;
+  const { error: uploadError } = await supabase.storage.from('receipts').upload(fileName, file.buffer, { contentType: file.mimetype });
 
+  if (uploadError) return res.status(500).json({ error: 'خطا در آپلود رسید' });
+
+  const receiptUrl = `${process.env.SUPABASE_URL.replace('.co', '')}.co/storage/v1/object/public/receipts/${fileName}`;
+  const { error: insertError } = await supabase.from('orders').insert([{ user, foodDesc, address, status: 'paid', receipt_url: receiptUrl, created_at: new Date() }]);
+
+  if (insertError) return res.status(500).json({ error: insertError.message });
+  res.json({ message: 'سفارش ثبت شد' });
+});
+
+// دریافت سفارش‌ها
+app.get('/api/orders', async (req, res) => {
+  const { data, error } = await supabase.from('orders').select('*').order('created_at', { ascending: false });
+  if (error) return res.status(500).json({ error: error.message });
   res.json(data);
 });
 
-// روت تست اتصال Supabase
-app.post('/test-supabase', async (req, res) => {
-  const { data, error } = await supabase
-    .from('orders')
-    .insert([{ user_id: 1, items: 'تست', total: 1000 }]);
-
-  if (error) {
-    console.error('❌ خطای تست اتصال Supabase:', error);
-    return res.status(500).json({
-      error: error.message,
-      details: error.details,
-      hint: error.hint,
-    });
-  }
-
-  res.json({ message: 'اتصال موفق به Supabase ✅', data });
+// تایید پرداخت
+app.patch('/api/order/:id/confirm', async (req, res) => {
+  const id = req.params.id;
+  const { error } = await supabase.from('orders').update({ status: 'paid' }).eq('id', id);
+  if (error) return res.status(500).json({ error: error.message });
+  res.json({ message: 'وضعیت پرداخت تایید شد' });
 });
 
-// پشتیبانی از SPA با مسیر wildcard
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// قبول سفارش توسط پیک
+app.patch('/api/order/:id/accept', async (req, res) => {
+  const id = req.params.id;
+  const { courier } = req.body;
+  if (!courier) return res.status(400).json({ error: 'نام پیک ارسال نشده' });
+  const { error } = await supabase.from('orders').update({ status: 'accepted', courier }).eq('id', id);
+  if (error) return res.status(500).json({ error: error.message });
+  res.json({ message: 'سفارش توسط پیک تایید شد' });
 });
 
-// شروع سرور
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
-
-if (error) {
-  console.error('❌ Supabase insert error:', error);
-  return res.status(500).json({ error: error.message, details: error.details });
-}
