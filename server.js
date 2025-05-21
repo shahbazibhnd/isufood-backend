@@ -99,8 +99,7 @@ app.patch('/api/order/:id/accept', async (req, res) => {
   res.json({ message: 'سفارش توسط پیک تایید شد' });
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
 
 app.post('/api/login', async (req, res) => {
   const { username, password, role } = req.body;
@@ -134,3 +133,7 @@ app.get('/api/export', async (req, res) => {
     login_logs: logs.data
   });
 });
+
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
