@@ -15,9 +15,12 @@
     "uuid": "^9.0.1"
   },
   "engines": {
-    "node": ">=16.0.0"
-  },
+  "node": ">=16 <20"
+},
   "keywords": [],
   "author": "ISUFood Dev",
   "license": "MIT"
 }
+
+
+
