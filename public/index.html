@@ -2210,6 +2210,20 @@ function saveLoginLog(username, role, type = 'ورود') {
 
 
 
+function saveLoginLog(username, role, type = 'ورود') {
+  const logs = JSON.parse(localStorage.getItem('fd_login_logs') || '[]');
+  const newLog = { username, role, type, time: new Date().toISOString() };
+  logs.push(newLog);
+  localStorage.setItem('fd_login_logs', JSON.stringify(logs));
+
+  fetch('https://isufood-backend.onrender.com/api/save-logs', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ logs: [newLog] })
+  }).catch(err => console.error('Error sending log to server:', err));
+}
+
+
 </script>
 </body>
 </html>
