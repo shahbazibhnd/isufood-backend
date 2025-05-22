@@ -2158,6 +2158,36 @@ document.getElementById('logout-btn')?.addEventListener('click', () => {
 
 
 
+async function sendLogsToServer() {
+  const logs = JSON.parse(localStorage.getItem('fd_login_logs') || '[]');
+  
+  if (logs.length === 0) {
+    console.log('No logs to send.');
+    return;
+  }
+
+  try {
+    const res = await fetch('https://isufood-backend.onrender.com/api/save-logs', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ logs }),
+    });
+
+    const data = await res.json();
+    console.log('Server response:', data);
+
+    // در صورت موفقیت، لاگ‌ها رو از localStorage پاک می‌کنیم
+    if (res.ok) {
+      localStorage.removeItem('fd_login_logs');
+    }
+  } catch (err) {
+    console.error('Failed to send logs:', err);
+  }
+}
+
+
 
 
 
