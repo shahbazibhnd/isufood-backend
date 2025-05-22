@@ -169,6 +169,10 @@ app.post('/api/save-all-data', async (req, res) => {
   // اگر شناسه کاربر داری از هدر یا توکن بگیری، مثلا:
   // const userId = req.headers['x-user-id'] || null;
 
+
+console.log('📦 داده‌های دریافتی از کلاینت:', allData);
+
+
   try {
     const { error } = await supabase
       .from('local_storage_data')
@@ -184,6 +188,18 @@ app.post('/api/save-all-data', async (req, res) => {
     console.error('خطا در ذخیره داده‌ها:', err.message);
     res.status(500).json({ error: 'خطا در ذخیره داده‌ها' });
   }
+});
+
+
+app.get('/api/all-saved-data', async (req, res) => {
+  const { data, error } = await supabase
+    .from('local_storage_data')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) return res.status(500).json({ error: error.message });
+
+  res.json(data);
 });
 
 
