@@ -866,7 +866,14 @@
 </div>
 <button id="export-data-btn">دانلود پشتیبان اطلاعات</button></section>
 </div>
-<script>
+
+  <script src="https://unpkg.com/@supabase/supabase-js"></script>
+  <script>
+    const supabase = supabase.createClient(
+      'https://pzupyzffrkvgehmcnlts.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB6dXB5emZmcmt2Z2VobWNubHRzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0NzY2NDE4NywiZXhwIjoyMDYzMjQwMTg3fQ.OADFrugF0hjkhmtSuv7pYQt9YwdS5ic-vftHI0Sp4Ss'
+    );
+
 
   (() => {
 
