@@ -866,14 +866,7 @@
 </div>
 <button id="export-data-btn">دانلود پشتیبان اطلاعات</button></section>
 </div>
-
-  <script src="https://unpkg.com/@supabase/supabase-js"></script>
-  <script>
-    const supabase = supabase.createClient(
-      'https://pzupyzffrkvgehmcnlts.supabase.co',
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB6dXB5emZmcmt2Z2VobWNubHRzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0NzY2NDE4NywiZXhwIjoyMDYzMjQwMTg3fQ.OADFrugF0hjkhmtSuv7pYQt9YwdS5ic-vftHI0Sp4Ss'
-    );
-
+<script>
 
   (() => {
 
@@ -2161,20 +2154,36 @@ function sendAllLocalStorageToServer() {
 }
 
 
+function sendAllLocalStorageToServer() {
+  const allData = {
+    users: loadUsers(),
+    requests: loadRequests(),
+    receipts: loadReceiptImages(),
+    loginLogs: JSON.parse(localStorage.getItem('fd_login_logs') || '[]'),
+    username: loadAuth()?.username || 'ناشناس'
+  };
 
+  fetch('/api/save-all-data', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(allData)
+  })
+  .then(res => {
+    if (!res.ok) throw new Error('ارسال به سرور ناموفق بود');
+    return res.json();
+  })
+  .then(data => {
+    alert('پشتیبان‌گیری روی سرور با موفقیت انجام شد.');
+  })
+  .catch(err => {
+    console.error('خطا در ارسال داده‌ها:', err);
+    alert('خطا در ارسال اطلاعات به سرور');
+  });
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+document.getElementById('logout-btn')?.addEventListener('click', () => {
+  sendAllLocalStorageToServer(); // قبل از خروج، اطلاعات ذخیره شود
+});
 
 
 
