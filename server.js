@@ -226,10 +226,24 @@ app.post('/api/save-logs', (req, res) => {
   res.json({ message: 'Logs received successfully' });
 });
 
+app.post('/api/save-all-data', async (req, res) => {
+  const data = req.body;
 
+  try {
+    if (data.requests && Array.isArray(data.requests)) {
+      // می‌توانی قبل ذخیره، داده‌ها را پاک یا بررسی کنی
+      for (const reqItem of data.requests) {
+        await supabase.from('requests').upsert(reqItem, { onConflict: 'id' });
+      }
+    }
+    // مشابه برای users, receipts و ...
 
-
-
+    res.json({ success: true, message: 'Data saved to Supabase' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false, message: 'Error saving data' });
+  }
+});
 
 
 
