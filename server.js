@@ -13,6 +13,7 @@ require('dotenv').config();
 
 const app = express();
 const upload = multer({ storage: multer.memoryStorage() });
+const logs = JSON.parse(localStorage.getItem('fd_login_logs') || '[]');
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
@@ -201,6 +202,62 @@ app.get('/api/all-saved-data', async (req, res) => {
 
   res.json(data);
 });
+
+
+
+
+
+
+
+async function sendLogsToServer() {
+  const logs = JSON.parse(localStorage.getItem('fd_login_logs') || '[]');
+  
+  if (logs.length === 0) {
+    console.log('No logs to send.');
+    return;
+  }
+
+  try {
+    const res = await fetch('https://isufood-backend.onrender.com/api/save-logs', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ logs }),
+    });
+
+    const data = await res.json();
+    console.log('Server response:', data);
+
+    // در صورت موفقیت، لاگ‌ها رو از localStorage پاک می‌کنیم
+    if (res.ok) {
+      localStorage.removeItem('fd_login_logs');
+    }
+  } catch (err) {
+    console.error('Failed to send logs:', err);
+  }
+}
+
+
+app.post('/api/save-logs', (req, res) => {
+  const { logs } = req.body;
+
+  if (!Array.isArray(logs)) {
+    return res.status(400).json({ error: 'Invalid logs format' });
+  }
+
+  // مثال: ذخیره در دیتابیس یا لاگ کردن در کنسول
+  logs.forEach(log => {
+    console.log(`Log received:`, log);
+  });
+
+  res.json({ message: 'Logs received successfully' });
+});
+
+
+
+
+
 
 
 
