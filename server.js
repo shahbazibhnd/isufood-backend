@@ -173,7 +173,7 @@ app.post('/api/save-all-data', async (req, res) => {
     const { error } = await supabase
       .from('local_storage_data')
       .insert([{ 
-        user_id: username , // یا userId اگر داری
+        user_id: allData.username || 'ناشناس'
         data: allData
       }]);
 
