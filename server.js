@@ -162,6 +162,21 @@ app.get('/api/export', async (req, res) => {
   });
 });
 
+
+
+app.post('/api/save-all-data', (req, res) => {
+  const allData = req.body;
+
+  // حالا می‌تونی allData رو داخل دیتابیس ذخیره کنی یا فایل بگیری
+
+  console.log('داده‌های دریافتی از کلاینت:', allData);
+
+  // فرضا ذخیره موفق
+  res.json({ success: true, message: 'داده‌ها ذخیره شدند' });
+});
+
+
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () =>
   console.log(`🚀 Server running on port ${PORT}`)

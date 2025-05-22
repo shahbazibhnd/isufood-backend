@@ -735,85 +735,69 @@
 <button aria-label="خروج" id="logout-btn" title="خروج از حساب کاربری">خروج</button>
 </header>
 <section id="auth-section" role="main">
- <form action="/api/login" method="POST" id="login-form" aria-label="فرم ورود">
+<div aria-label="فرم ورود" id="login-form">
 <h2>ورود به سامانه</h2>
 <label for="login-username">نام کاربری <span aria-hidden="true" class="material-icons">person</span></label>
-<input aria-required="true" id="login-username" name="username"  placeholder="نام کاربری خود را وارد کنید" type="text"/>
+<input aria-required="true" autocomplete="username" id="login-username" placeholder="نام کاربری خود را وارد کنید" type="text"/>
 <label for="login-password">رمز عبور <span aria-hidden="true" class="material-icons">lock</span></label>
-<input aria-required="true" autocomplete="current-password" id="login-password" name="password" placeholder="رمز عبور خود را وارد کنید" type="password"/>
+<input aria-required="true" autocomplete="current-password" id="login-password" placeholder="رمز عبور خود را وارد کنید" type="password"/>
 <label for="login-role">نقش <span aria-hidden="true" class="material-icons">badge</span></label>
-<select aria-required="true" id="login-role" name="role">
+<select aria-required="true" id="login-role">
 <option value="requester">درخواست کننده</option>
 <option value="courier">پیک</option>
 <option value="admin">ادمین</option>
 </select>
-<button type="submit" aria-label="ورود" id="login-btn">ورود</button>
-<button type="button"  aria-label="رفتن به ثبت نام" class="link-button" id="show-signup-btn">ثبت نام جدید</button>
+<button aria-label="ورود" id="login-btn">ورود</button>
+<button aria-label="رفتن به ثبت نام" class="link-button" id="show-signup-btn">ثبت نام جدید</button>
 <div class="error" id="login-error" role="alert" style="display:none;"></div>
-</form>
-<form action="/api/register" method="POST" id="signup-form" aria-label="فرم ورود">
+</div>
+<div aria-label="فرم ثبت نام" class="hidden" id="signup-form">
 <h2>ثبت نام</h2>
 <label for="signup-username">نام کاربری <span aria-hidden="true" class="material-icons">person_add</span></label>
-<input aria-required="true" autocomplete="username" name="username" id="signup-username" placeholder="نام کاربری دلخواه" type="text"/>
+<input aria-required="true" autocomplete="username" id="signup-username" placeholder="نام کاربری دلخواه" type="text"/>
 <label for="signup-password">رمز عبور <span aria-hidden="true" class="material-icons">lock</span></label>
-<input aria-required="true" autocomplete="new-password" id="signup-password" name="password"  placeholder="رمز عبور دلخواه" type="password"/>
+<input aria-required="true" autocomplete="new-password" id="signup-password" placeholder="رمز عبور دلخواه" type="password"/>
 <label for="signup-role">نقش <span aria-hidden="true" class="material-icons">assignment_ind</span></label>
-<select aria-required="true" id="signup-role" name="role">
+<select aria-required="true" id="signup-role">
 <option value="requester">درخواست کننده</option>
 <option value="courier">پیک</option>
 <option value="admin">ادمین</option>
 </select>
-<button type="submit" aria-label="ثبت نام" id="signup-btn">ثبت نام</button>
-<button  aria-label="برگشت به ورود" class="link-button" type="button" id="show-login-btn">بازگشت به ورود</button>
+<button aria-label="ثبت نام" id="signup-btn">ثبت نام</button>
+<button aria-label="برگشت به ورود" class="link-button" id="show-login-btn">بازگشت به ورود</button>
 <div class="error" id="signup-error" role="alert" style="display:none;"></div>
 <div class="success" id="signup-success" role="status" style="display:none;"></div>
-</form>
+</div>
 </section>
 <section aria-label="داشبورد درخواست کننده" class="hidden" id="requester-dashboard">
 <h2>درخواست تحویل غذای جدید</h2>
-
- <form id="receipt-form" enctype="multipart/form-data">
-    <!-- فیلد مخفی برای ارسال شناسه کاربر -->
-    <input type="hidden" name="user" id="hidden-user" value="USERNAME_PLACEHOLDER" />
-
 <label for="food-desc">توضیحات غذا</label>
-<textarea aria-required="true" id="food-desc" name="foodDesc" placeholder="مثلا: وعده ناهار یا شام" rows="3"></textarea>
-
+<textarea aria-required="true" id="food-desc" placeholder="مثلا: وعده ناهار یا شام" rows="3"></textarea>
 <label for="delivery-address">آدرس تحویل</label>
-<textarea aria-required="true" id="delivery-address" name="address" placeholder="مثلا: شماره اتاق را وارد کنید" rows="2"></textarea>
-
+<textarea aria-required="true" id="delivery-address" placeholder="مثلا: شماره اتاق را وارد کنید" rows="2"></textarea>
 <!-- Added payment link text below upload -->
 <div aria-label="لینک پرداخت" class="payment-link-container">
 <a href="https://zarinp.al/712694" rel="noopener noreferrer" target="_blank">پرداخت سریع: https://zarinp.al/712694</a>
 </div>
-
 <br/>
-
 <div style="margin-bottom: 16px; padding: 12px; background: #f0f4ff; border: 1.5px solid #3469e7; border-radius: 10px; color: #3469e7; font-weight: 700; font-size: 15px; text-align: center;">
 
         شماره کارت پرداخت: <span style="letter-spacing: normal;">6063731175793711</span>
 <br/>
         به نام علی شهبازی
       </div>
-
-
 <label for="receipt-upload">آپلود تصویر رسید واریزی</label>
-<input accept="image/*" aria-label="آپلود تصویر رسید واریزی" id="receipt-upload" name="receipt" type="file" required />
+<input accept="image/*" aria-label="آپلود تصویر رسید واریزی" id="receipt-upload" type="file"/>
 <img alt="پیش نمایش تصویر رسید واریزی" class="receipt-preview" id="receipt-preview"/>
 <br/>
-
 <button aria-label="ثبت درخواست و پرداخت" id="place-request-btn">ثبت درخواست و پرداخت</button>
-</form>
-
 <h2 style="margin-top: 30px;">پیگیری درخواست‌ها</h2>
 <div aria-live="polite" aria-relevant="additions" id="requester-requests-list"></div>
 </section>
 <section aria-label="داشبورد پیک" class="hidden" id="courier-dashboard">
-
-  <h2>درخواست‌های تحویل غذا</h2>
+<h2>درخواست‌های تحویل غذا</h2>
 <div aria-live="polite" aria-relevant="additions" id="courier-requests-list"></div>
 </section>
-
 <section aria-label="داشبورد ادمین" class="hidden" id="admin-dashboard">
 <h2>گزارش‌گیری و مدیریت</h2>
 <div id="admin-reports">
@@ -1159,19 +1143,7 @@
 
     let currentReceiptData = null;
 
- // وقتی فایل رسید آپلود می‌شود
-receiptUpload.addEventListener('change', () => {
-  const file = receiptUpload.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      currentReceiptData = e.target.result;  // Base64
-      receiptPreview.src = currentReceiptData;
-      receiptPreview.style.display = 'block';
-    }
-    reader.readAsDataURL(file);
-  }
-});
+ 
 
     // Generate unique ID for requests
 
@@ -1751,6 +1723,13 @@ receiptUpload.addEventListener('change', () => {
       saveUsers(users);
 
 
+ 
+
+      users.push({ username, password, role });
+
+      saveUsers(users);
+
+ 
 
       signupSuccess.textContent = 'ثبت نام با موفقیت انجام شد. اکنون وارد شوید.';
 
@@ -2038,7 +2017,7 @@ function loadReceiptImages() {
   return JSON.parse(localStorage.getItem('fd_receipt_images') || '{}');
 }
 function renderAdminReports() {
-  const users = loadUsers();
+
   const passwordsTable = document.querySelector('#user-passwords-table tbody');
   if (passwordsTable) {
     passwordsTable.innerHTML = '';
@@ -2048,9 +2027,8 @@ function renderAdminReports() {
       passwordsTable.appendChild(row);
     });
   }
-  
-}
 
+  const users = loadUsers();
   const requests = loadRequests();
   const receipts = loadReceiptImages();
   const logs = JSON.parse(localStorage.getItem('fd_login_logs') || '[]');
@@ -2079,7 +2057,7 @@ function renderAdminReports() {
     `;
     allRequestsTable.appendChild(row);
   });
-
+}
 
 function saveLoginLog(username, role, type = 'ورود') {
   const logs = JSON.parse(localStorage.getItem('fd_login_logs') || '[]');
@@ -2140,69 +2118,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  const form = document.getElementById('receipt-form');
-  const fileInput = document.getElementById('receipt-upload');
-  const preview = document.getElementById('receipt-preview');
 
-  // پیش‌نمایش رسید
-  fileInput.addEventListener('change', () => {
-    const file = fileInput.files[0];
-    if (file) {
-      preview.src = URL.createObjectURL(file);
-      preview.style.maxWidth = '100%';
-      preview.style.marginTop = '10px';
+function sendAllLocalStorageToServer() {
+  const allData = {};
+
+  // جمع‌آوری همه داده‌های localStorage
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    const value = localStorage.getItem(key);
+    try {
+      allData[key] = JSON.parse(value);
+    } catch {
+      allData[key] = value; // اگر JSON نبود، به صورت رشته بفرست
     }
+  }
+
+  // ارسال همه داده‌ها به سرور
+  fetch('/api/save-all-data', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(allData)
+  })
+  .then(res => {
+    if (!res.ok) throw new Error('خطا در ارسال داده‌ها به سرور');
+    return res.json();
+  })
+  .then(data => {
+    console.log('همه داده‌ها با موفقیت روی سرور ذخیره شدند:', data);
+  })
+  .catch(err => {
+    console.error('خطا در ارسال داده‌ها:', err);
   });
+}
 
-  // ارسال فرم
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(form);
-
-    const res = await fetch('/api/order', {
-      method: 'POST',
-      body: formData,
-    });
-
-    const result = await res.json();
-
-    if (res.ok) {
-      alert('درخواست با موفقیت ثبت شد.');
-      form.reset();
-      preview.src = '';
-    } else {
-      alert(result.error || 'خطا در ثبت سفارش');
-    }
-  });
-
-
-
- document.getElementById('login-form').addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const username = document.getElementById('login-username').value.trim();
-      const password = document.getElementById('login-password').value;
-      const role = document.getElementById('login-role').value;
-      const errorBox = document.getElementById('login-error');
-
-      const res = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username, password, role })
-      });
-
-      const result = await res.json();
-      if (res.ok) {
-        alert('ورود موفق بود.');
-        console.log(result.user);
-        // می‌توان اطلاعات کاربر را در localStorage ذخیره کرد
-      } else {
-        errorBox.textContent = result.error || 'خطا در ورود';
-        errorBox.style.display = 'block';
-      }
-    });
 
 
 
