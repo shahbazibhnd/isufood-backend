@@ -901,6 +901,22 @@
       signupError.style.display = 'none';
       signupSuccess.style.display = 'none';
 
+      if (!username || username.length < 3) {
+        signupError.textContent = 'نام کاربری باید حداقل ۳ حرف باشد.';
+        signupError.style.display = 'block';
+        return;
+      }
+      if (!password || password.length < 4) {
+        signupError.textContent = 'رمز عبور باید حداقل ۴ حرف باشد.';
+        signupError.style.display = 'block';
+        return;
+      }
+      if (role === 'admin') {
+        signupError.textContent = 'ثبت‌نام ادمین مجاز نیست.';
+        signupError.style.display = 'block';
+        return;
+      }
+
       const res = await fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
