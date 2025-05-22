@@ -164,15 +164,26 @@ app.get('/api/export', async (req, res) => {
 
 
 
-app.post('/api/save-all-data', (req, res) => {
+app.post('/api/save-all-data', async (req, res) => {
   const allData = req.body;
+  // اگر شناسه کاربر داری از هدر یا توکن بگیری، مثلا:
+  // const userId = req.headers['x-user-id'] || null;
 
-  // حالا می‌تونی allData رو داخل دیتابیس ذخیره کنی یا فایل بگیری
+  try {
+    const { error } = await supabase
+      .from('local_storage_data')
+      .insert([{ 
+        user_id: username , // یا userId اگر داری
+        data: allData
+      }]);
 
-  console.log('داده‌های دریافتی از کلاینت:', allData);
+    if (error) throw error;
 
-  // فرضا ذخیره موفق
-  res.json({ success: true, message: 'داده‌ها ذخیره شدند' });
+    res.json({ success: true, message: 'داده‌ها ذخیره شدند' });
+  } catch (err) {
+    console.error('خطا در ذخیره داده‌ها:', err.message);
+    res.status(500).json({ error: 'خطا در ذخیره داده‌ها' });
+  }
 });
 
 
