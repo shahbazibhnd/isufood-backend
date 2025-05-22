@@ -2120,41 +2120,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 function sendAllLocalStorageToServer() {
-  const allData = {};
-
-  // جمع‌آوری همه داده‌های localStorage
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    const value = localStorage.getItem(key);
-    try {
-      allData[key] = JSON.parse(value);
-    } catch {
-      allData[key] = value; // اگر JSON نبود، به صورت رشته بفرست
-    }
-  }
-
-  // ارسال همه داده‌ها به سرور
-  fetch('/api/save-all-data', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(allData)
-  })
-  .then(res => {
-    if (!res.ok) throw new Error('خطا در ارسال داده‌ها به سرور');
-    return res.json();
-  })
-  .then(data => {
-    console.log('همه داده‌ها با موفقیت روی سرور ذخیره شدند:', data);
-  })
-  .catch(err => {
-    console.error('خطا در ارسال داده‌ها:', err);
-  });
-}
-
-
-function sendAllLocalStorageToServer() {
   const allData = {
     users: loadUsers(),
     requests: loadRequests(),
